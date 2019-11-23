@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GlobalEventSheet</name>
+    <events>
+        <include>DimensionChangeEventSheet</include>
+        <include>SeaDimensionEventSheet</include>
+        <include>NormalDimensionEventSheet</include>
+        <event-block sid="387467283334497">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="402318174600822" type="System">
+                    <param id="0" name="Interval (seconds)">1.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Add to" sid="182051115956306" type="txtPuntuation">
+                    <param id="0" name="Instance variable">puntuation</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" sid="671041352481664" type="txtPuntuation">
+                    <param id="0" name="Text">txtPuntuation.puntuation</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="318317073476244">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="449869531391390" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="679159887916197">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="489953523709637" type="tbOxigen">
+                            <param id="0" name="Instance variable">beingUsed</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="258287633794351" type="tbOxigen">
+                            <param id="0" name="Instance variable">air</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="822742112468400" type="tbOxigen">
+                            <param id="0" name="Width">tbOxigen.air</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="161409526308872">
+            <conditions />
+            <actions />
+        </event-block>
+    </events>
+</c2eventsheet>

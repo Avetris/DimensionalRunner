@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>NormalDimensionEventSheet</name>
+    <events>
+        <event-block sid="803206900080621">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="683806076175575" type="NormalDimension">
+                    <param id="0" name="Object">NormalWindowDetection</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="375266534655955" type="NormalDimension">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="960888336596494">
+            <conditions>
+                <condition id="1" inverted="1" name="Is overlapping another object" sid="554104722164573" type="NormalDimension">
+                    <param id="0" name="Object">NormalWindowDetection</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="361304479686319" type="NormalDimension">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

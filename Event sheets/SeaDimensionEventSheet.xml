@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>SeaDimensionEventSheet</name>
+    <events>
+        <event-block sid="877559953960785">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="677280831604300" type="SeaDimension">
+                    <param id="0" name="Object">SeaWindowDetection</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="143076847396530" type="SeaDimension">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="342472397412213">
+            <conditions>
+                <condition id="1" inverted="1" name="Is overlapping another object" sid="617214171068485" type="SeaDimension">
+                    <param id="0" name="Object">SeaWindowDetection</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="654254150317010" type="SeaDimension">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
