@@ -12,45 +12,145 @@
                     <param id="0" name="Interval (seconds)">1.0</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="-11" name="Add to" sid="182051115956306" type="txtPuntuation">
-                    <param id="0" name="Instance variable">puntuation</param>
-                    <param id="1" name="Value">1</param>
-                </action>
-                <action id="0" name="Set text" sid="671041352481664" type="txtPuntuation">
-                    <param id="0" name="Text">txtPuntuation.puntuation</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="872437033666197">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="307272373233183" type="System">
+                            <param id="0" name="Variable">currentAction</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="498220856065481" type="Function">
+                            <param id="0" name="Name">&quot;checkBackDimensionChangeTime&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="983968851081035">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="712522145127854" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">NormalWindowDetection.dimensionPosition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="182051115956306" type="txtPuntuation">
+                                    <param id="0" name="Instance variable">puntuation</param>
+                                    <param id="1" name="Value">NORMAL_DIMENSION_PUNTUATION</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="204720652619478">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="768187788083853" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="518378437808777" type="txtPuntuation">
+                                    <param id="0" name="Instance variable">puntuation</param>
+                                    <param id="1" name="Value">SEA_DIMENSION_PUNTUATION</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="945587370879410">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Set text" sid="671041352481664" type="txtPuntuation">
+                                    <param id="0" name="Text">txtPuntuation.puntuation</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="129450257194529">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="195973302383616" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="996088140308904" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="258287633794351" type="tbOxigen">
+                                    <param id="0" name="Instance variable">air</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="822742112468400" type="tbOxigen">
+                                    <param id="0" name="Width">tbOxigen.air</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="648599673612868">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="114670329000985" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="308793362263123" type="tbOxigen">
+                                    <param id="0" name="Instance variable">air</param>
+                                    <param id="1" name="Value">1.5</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="146512354410512" type="tbOxigen">
+                                    <param id="0" name="Width">tbOxigen.air</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="318317073476244">
+        <event-block sid="870001254573330">
             <conditions>
-                <condition id="-6" name="Every X seconds" sid="449869531391390" type="System">
-                    <param id="0" name="Interval (seconds)">2</param>
+                <condition id="0" name="On function" sid="323443809108073" type="Function">
+                    <param id="0" name="Name">&quot;checkBackDimensionChangeTime&quot;</param>
                 </condition>
             </conditions>
             <actions />
             <sub-events>
-                <event-block sid="679159887916197">
+                <event-block sid="922161042769329">
                     <conditions>
-                        <condition id="-8" name="Is boolean instance variable set" sid="489953523709637" type="tbOxigen">
-                            <param id="0" name="Instance variable">beingUsed</param>
+                        <condition id="-14" name="Compare variable" sid="947505238451698" type="System">
+                            <param id="0" name="Variable">dimensionChangeLeftTime</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-11" name="Add to" sid="258287633794351" type="tbOxigen">
-                            <param id="0" name="Instance variable">air</param>
-                            <param id="1" name="Value">-1</param>
+                        <action id="-11" name="Subtract from" sid="613211616451694" type="System">
+                            <param id="0" name="Variable">dimensionChangeLeftTime</param>
+                            <param id="1" name="Value">1</param>
                         </action>
-                        <action id="-5" name="Set width" sid="822742112468400" type="tbOxigen">
-                            <param id="0" name="Width">tbOxigen.air</param>
+                        <action id="-2" name="Set Y" sid="711102509649767" type="backDimensionsUnabled">
+                            <param id="0" name="Y">backDimensions.Y + ((backDimensions.Height * (DIMENSION_CHANGE_TIME - dimensionChangeLeftTime )/ DIMENSION_CHANGE_TIME) )/ 2</param>
+                        </action>
+                        <action id="-6" name="Set height" sid="939566378357467" type="backDimensionsUnabled">
+                            <param id="0" name="Height">backDimensions.Height * (dimensionChangeLeftTime  / DIMENSION_CHANGE_TIME)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="886290062826583">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="839568987357744" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-6" name="Set height" sid="829776004879645" type="backDimensionsUnabled">
+                            <param id="0" name="Height">backDimensions.Height * dimensionChangeLeftTime  / DIMENSION_CHANGE_TIME</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="164102647539836" type="backDimensionsUnabled">
+                            <param id="0" name="Y">backDimensions.Y</param>
                         </action>
                     </actions>
                 </event-block>
             </sub-events>
-        </event-block>
-        <event-block sid="161409526308872">
-            <conditions />
-            <actions />
         </event-block>
     </events>
 </c2eventsheet>

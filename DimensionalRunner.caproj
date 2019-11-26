@@ -10,6 +10,7 @@
     <unique-id>b4tvrm04pr76</unique-id>
     <saved-with-version>27500</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
@@ -17,7 +18,6 @@
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
@@ -95,7 +95,6 @@
                 <plugin id="TiledBg" />
                 <instance-variables>
                     <instance-variable name="air" sid="108065932064429" type="number" />
-                    <instance-variable name="beingUsed" sid="526978354439797" type="boolean" />
                 </instance-variables>
                 <texture />
             </object-type>
@@ -399,6 +398,30 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="NormalTopSpawner" sid="959262598203537">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="289965735656911" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="NormalMiddleSpawner" sid="908178990729569">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="887359522474418" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="NormalBottomSpawner" sid="720171700863585">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="337269644660679" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
         <object-folder name="SeaDimension">
             <object-type name="Sprite3" sid="308191427138841">
@@ -695,8 +718,32 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="SeaBottomSpawner" sid="478895375834577">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="317512591828950" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="SeaMiddleSpawner" sid="982452739388760">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="664261746984380" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="SeaTopSpawner" sid="110168209618780">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="760808158316860" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
-        <object-type name="Suelo" sid="829993663832852">
+        <object-type name="MiddleGround" sid="829993663832852">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="101067189321427">
@@ -715,10 +762,58 @@
         <object-type name="Function" sid="853084775884932">
             <plugin id="Function" />
         </object-type>
+        <object-type name="Browser" sid="195365327482856">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="Suelo2" sid="934959962868389">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="899548785314463">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="343603726948798" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\aitor\Desktop\Master Videojuegos\Introduccion al Diseño de Videojuegos\Proyectos\Resources\grassMid.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="backDimensions" sid="308305243848653">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="997455607566335" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Ceiling" sid="518424757484165">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="189332461866821">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="604018797490071" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\aitor\Desktop\Master Videojuegos\Introduccion al Diseño de Videojuegos\Proyectos\Resources\grassMid.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="backDimensionsUnabled" sid="800960931623674">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="153942698199942" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="NormalDimension" plugin-id="Sprite" sid="779853111722590">
             <members>
+                <member>NormalBottomSpawner</member>
+                <member>NormalMiddleSpawner</member>
+                <member>NormalTopSpawner</member>
                 <member>NormalWindowDetection</member>
                 <member>playerNormal</member>
                 <member>Sprite</member>
@@ -726,26 +821,19 @@
             <instance-variables>
                 <instance-variable name="dimensionPosition" sid="845598523045606" type="number" />
             </instance-variables>
-            <behaviors>
-                <behavior-type name="Pin" sid="944771529347199">
-                    <behavior id="Pin" />
-                </behavior-type>
-            </behaviors>
         </family>
         <family name="SeaDimension" plugin-id="Sprite" sid="538339064757241">
             <members>
                 <member>playerSea</member>
+                <member>SeaBottomSpawner</member>
+                <member>SeaMiddleSpawner</member>
+                <member>SeaTopSpawner</member>
                 <member>SeaWindowDetection</member>
                 <member>Sprite3</member>
             </members>
             <instance-variables>
                 <instance-variable name="dimensionPosition" sid="800283188668659" type="number" />
             </instance-variables>
-            <behaviors>
-                <behavior-type name="Pin" sid="256755606248494">
-                    <behavior id="Pin" />
-                </behavior-type>
-            </behaviors>
         </family>
         <family name="Player" plugin-id="Sprite" sid="141560050967522">
             <members>
@@ -805,6 +893,7 @@
     <global-instances>
         <global-instance type="Mouse" uid="13" />
         <global-instance type="Function" uid="14" />
+        <global-instance type="Browser" uid="9" />
     </global-instances>
     <sounds-folder />
     <music-folder />

@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>SeaDimensionEventSheet</name>
     <events>
+        <variable constant="1" name="SEA_DIMENSION_PUNTUATION" sid="335407280921640" static="0" type="number">0</variable>
         <event-block sid="877559953960785">
             <conditions>
                 <condition id="1" name="Is overlapping another object" sid="677280831604300" type="SeaDimension">

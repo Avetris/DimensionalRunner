@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>NormalDimensionEventSheet</name>
     <events>
+        <variable constant="1" name="NORMAL_DIMENSION_PUNTUATION" sid="607933237517883" static="0" type="number">0</variable>
         <event-block sid="803206900080621">
             <conditions>
                 <condition id="1" name="Is overlapping another object" sid="683806076175575" type="NormalDimension">

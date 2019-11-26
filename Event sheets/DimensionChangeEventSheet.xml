@@ -3,26 +3,127 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>DimensionChangeEventSheet</name>
     <events>
+        <variable constant="1" name="JUMP_ACTION" sid="862597588038337" static="0" type="number">0</variable>
+        <variable constant="1" name="HOVER_ACTION" sid="677523695553473" static="0" type="number">1</variable>
         <variable constant="0" name="enableCollisions" sid="398567154084057" static="0" type="number">1</variable>
+        <variable constant="1" name="DIMENSION_CHANGE_TIME" sid="571721184049872" static="0" type="number">7</variable>
+        <variable constant="0" name="dimensionChangeLeftTime" sid="454754905378664" static="0" type="number">0</variable>
         <variable constant="0" name="currentAction" sid="271567953864743" static="0" type="number">0</variable>
         <variable constant="0" name="currentDimensionAux" sid="787838747667600" static="0" type="number">0</variable>
         <variable constant="0" name="currentDimension" sid="897143608669633" static="0" type="number">0</variable>
         <variable constant="0" name="positionAux" sid="320495541311395" static="0" type="number">0</variable>
-        <variable constant="1" name="JUMP_ACTION" sid="862597588038337" static="0" type="number">0</variable>
-        <variable constant="0" name="x" sid="613274533072648" static="0" type="number">0</variable>
-        <variable constant="0" name="width" sid="531622542657637" static="0" type="number">0</variable>
-        <variable constant="0" name="y" sid="998314982778313" static="0" type="number">0</variable>
-        <variable constant="0" name="height" sid="564865454811889" static="0" type="number">0</variable>
-        <variable constant="0" name="scale" sid="162888282708849" static="0" type="number">0</variable>
-        <variable constant="0" name="x1" sid="470397909689963" static="0" type="number">0</variable>
-        <variable constant="0" name="y1" sid="513639035449698" static="0" type="number">0</variable>
-        <variable constant="1" name="HOVER_ACTION" sid="677523695553473" static="0" type="number">1</variable>
+        <variable constant="0" name="xMain" sid="613274533072648" static="0" type="number">0</variable>
+        <variable constant="0" name="yMain" sid="700123939981363" static="0" type="number">0</variable>
+        <variable constant="0" name="xNew" sid="751399244503773" static="0" type="number">0</variable>
+        <variable constant="0" name="yNew" sid="609519849397279" static="0" type="number">0</variable>
+        <variable constant="0" name="widthMain" sid="813538757164426" static="0" type="number">0</variable>
+        <variable constant="0" name="heightMain" sid="489299607743209" static="0" type="number">0</variable>
+        <variable constant="0" name="widthNew" sid="285205806824954" static="0" type="number">0</variable>
+        <variable constant="0" name="heightNew" sid="467488778342084" static="0" type="number">0</variable>
+        <variable constant="0" name="dimensionInitialization" sid="537008797044780" static="0" type="number">0</variable>
+        <variable constant="0" name="totalDimensions" sid="183805900099794" static="0" type="number">3</variable>
+        <event-block sid="113181838577138">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="205975653204135" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="715428504524206">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="582417594030803" type="WindowDetection">
+                            <param id="0" name="Instance variable">windowDetectionDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="204936053193730" type="System">
+                            <param id="0" name="Variable">xMain</param>
+                            <param id="1" name="Value">WindowDetection.X - (WindowDetection.Width / 2)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="730432160085961" type="System">
+                            <param id="0" name="Variable">widthMain</param>
+                            <param id="1" name="Value">WindowDetection.Width</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="370406288170643" type="System">
+                            <param id="0" name="Variable">heightMain</param>
+                            <param id="1" name="Value">NormalWindowDetection.Height</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="291814259606761" type="System">
+                            <param id="0" name="Variable">yMain</param>
+                            <param id="1" name="Value">WindowDetection.Y - (heightMain / 2)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="422727215461692">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="348756399483546" type="System">
+                            <param id="0" name="Object">WindowDetection</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="471591623928663" type="WindowDetection">
+                            <param id="0" name="Instance variable">windowDetectionDimension</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="499386482848155" type="System">
+                            <param id="0" name="Variable">widthNew</param>
+                            <param id="1" name="Value">widthMain / totalDimensions</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="750804720153695" type="System">
+                            <param id="0" name="Variable">xNew</param>
+                            <param id="1" name="Value">(WindowDetection.X - widthNew) + (widthNew * dimensionInitialization)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="731894253111522" type="System">
+                            <param id="0" name="Variable">heightNew</param>
+                            <param id="1" name="Value">200</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="141724070450572" type="System">
+                            <param id="0" name="Variable">yNew</param>
+                            <param id="1" name="Value">backDimensions.Y</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="805103735309949" type="System">
+                            <param id="0" name="Variable">dimensionInitialization</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="226869103452930">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="836218416983714" type="WindowDetection">
+                                    <param id="0" name="Instance variable">windowDetectionDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">dimensionInitialization </param>
+                                </condition>
+                                <condition id="-24" name="For Each (ordered)" sid="207861837247882" type="System">
+                                    <param id="0" name="Object">SeaDimension</param>
+                                    <param id="1" name="Expression">0</param>
+                                    <param id="2" name="Order">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="560890337108168" type="Function">
+                                    <param id="0" name="Name">&quot;move&quot;</param>
+                                    <param id="1" name="Parameter {n}">SeaDimension.UID{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
         <event-block sid="952758791625724">
             <conditions>
                 <condition id="6" name="On object clicked" sid="336973645342539" type="Mouse">
                     <param id="0" name="Mouse button">0</param>
                     <param id="1" name="Click type">0</param>
                     <param id="2" name="Object clicked">WindowDetection</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="568804396014433" type="System">
+                    <param id="0" name="Variable">currentAction</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">-1</param>
                 </condition>
             </conditions>
             <actions>
@@ -40,33 +141,41 @@
                             <param id="2" name="Second value">currentDimension</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="702296001355965" type="System">
-                            <param id="0" name="Variable">currentAction</param>
-                            <param id="1" name="Value">-1</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="919453343256673" type="playerNormal">
-                            <param id="0" name="Animation">&quot;holeOpen&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action id="0" name="Call function" sid="201000141793205" type="Function">
-                            <param id="0" name="Name">&quot;changePlayMode&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
-                        </action>
-                        <action id="0" name="Call function" sid="916518364624849" type="Function">
-                            <param id="0" name="Name">&quot;getPositions&quot;</param>
-                            <param id="1" name="Parameter {n}">0{###}currentDimensionAux</param>
-                        </action>
-                        <action id="0" name="Call function" sid="885456663266940" type="Function">
-                            <param id="0" name="Name">&quot;getPositions&quot;</param>
-                            <param id="1" name="Parameter {n}">1{###}currentDimension</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="955420053361985">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="376631574563176" type="System">
+                                    <param id="0" name="Variable">dimensionChangeLeftTime</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="702296001355965" type="System">
+                                    <param id="0" name="Variable">currentAction</param>
+                                    <param id="1" name="Value">-1</param>
+                                </action>
+                                <action id="0" name="Call function" sid="201000141793205" type="Function">
+                                    <param id="0" name="Name">&quot;changePlayMode&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="885456663266940" type="Function">
+                                    <param id="0" name="Name">&quot;getPositions&quot;</param>
+                                    <param id="1" name="Parameter {n}">1{###}currentDimension</param>
+                                </action>
+                                <action id="0" name="Call function" sid="916518364624849" type="Function">
+                                    <param id="0" name="Name">&quot;getPositions&quot;</param>
+                                    <param id="1" name="Parameter {n}">0{###}currentDimensionAux</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block sid="304852064314311">
                     <conditions>
                         <condition id="-22" name="Else" sid="771020341909244" type="System" />
-                        <condition id="-19" name="Pick all" sid="599723024277413" type="System">
+                        <condition id="-11" name="For Each" sid="599723024277413" type="System">
                             <param id="0" name="Object">Player</param>
                         </condition>
                     </conditions>
@@ -88,7 +197,11 @@
                         </event-block>
                         <event-block sid="683210282854022">
                             <conditions>
-                                <condition id="-22" name="Else" sid="481143591488141" type="System" />
+                                <condition id="-14" name="Compare variable" sid="481143591488141" type="System">
+                                    <param id="0" name="Variable">currentAction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">JUMP_ACTION</param>
+                                </condition>
                             </conditions>
                             <actions>
                                 <action behavior="Jump" id="7" name="Simulate control" sid="654821913900506" type="Player">
@@ -110,7 +223,7 @@
                         </condition>
                         <condition id="-34" name="Pick by evaluate" sid="140344691784289" type="System">
                             <param id="0" name="Object">Player</param>
-                            <param id="1" name="Expression">Player.dimension = currentDimension</param>
+                            <param id="1" name="Expression">Player.dimension = currentDimensionAux</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -133,7 +246,11 @@
                         </action>
                         <action id="0" name="Call function" sid="415705681353386" type="Function">
                             <param id="0" name="Name">&quot;changeDimension&quot;</param>
-                            <param id="1" name="Parameter {n}">1{###}currentDimension{###}positionAux</param>
+                            <param id="1" name="Parameter {n}">0{###}currentDimensionAux</param>
+                        </action>
+                        <action id="0" name="Call function" sid="366089554603723" type="Function">
+                            <param id="0" name="Name">&quot;changeDimension&quot;</param>
+                            <param id="1" name="Parameter {n}">1{###}currentDimension</param>
                         </action>
                         <action id="0" name="Call function" sid="831860949218289" type="Function">
                             <param id="0" name="Name">&quot;holeClose&quot;</param>
@@ -152,11 +269,60 @@
                             <param id="0" name="Animation">Self.skin</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="0" name="Call function" sid="591579509606730" type="Function">
-                            <param id="0" name="Name">&quot;changePlayMode&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="781450084081023">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="608692348298964" type="System">
+                                    <param id="0" name="Variable">currentDimensionAux</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="225700986013960" type="System">
+                                    <param id="0" name="Variable">currentAction</param>
+                                    <param id="1" name="Value">JUMP_ACTION</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="416109439209967">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="324308482000156" type="System">
+                                    <param id="0" name="Variable">currentDimensionAux</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="735454581705569" type="System">
+                                    <param id="0" name="Variable">currentAction</param>
+                                    <param id="1" name="Value">HOVER_ACTION</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="319797889174370">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="524809185971783" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Value">currentDimensionAux</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="483197120029180" type="System">
+                                    <param id="0" name="Variable">dimensionChangeLeftTime</param>
+                                    <param id="1" name="Value">DIMENSION_CHANGE_TIME + 1</param>
+                                </action>
+                                <action id="0" name="Call function" sid="428535108857913" type="Function">
+                                    <param id="0" name="Name">&quot;checkBackDimensionChangeTime&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="844433670335424" type="Function">
+                                    <param id="0" name="Name">&quot;changePlayMode&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
@@ -164,6 +330,9 @@
             <conditions>
                 <condition id="0" name="On function" sid="488816116498265" type="Function">
                     <param id="0" name="Name">&quot;changePlayMode&quot;</param>
+                </condition>
+                <condition id="-19" name="Pick all" sid="115708490781561" type="System">
+                    <param id="0" name="Object">Player</param>
                 </condition>
             </conditions>
             <actions />
@@ -175,9 +344,6 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">JUMP_ACTION</param>
                         </condition>
-                        <condition id="-19" name="Pick all" sid="115708490781561" type="System">
-                            <param id="0" name="Object">Player</param>
-                        </condition>
                     </conditions>
                     <actions>
                         <action behavior="Jump" id="11" name="Set enabled" sid="911910108132922" type="Player">
@@ -185,10 +351,6 @@
                         </action>
                         <action behavior="Hover" id="11" name="Set enabled" sid="867025841502870" type="Player">
                             <param id="0" name="State">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="291232619684614" type="System">
-                            <param id="0" name="Variable">enableCollisions</param>
-                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                 </event-block>
@@ -199,9 +361,6 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">HOVER_ACTION</param>
                         </condition>
-                        <condition id="-19" name="Pick all" sid="577614712494985" type="System">
-                            <param id="0" name="Object">Player</param>
-                        </condition>
                     </conditions>
                     <actions>
                         <action behavior="Jump" id="11" name="Set enabled" sid="854354584648262" type="Player">
@@ -210,17 +369,14 @@
                         <action behavior="Hover" id="11" name="Set enabled" sid="513494219001520" type="Player">
                             <param id="0" name="State">1</param>
                         </action>
-                        <action id="-9" name="Set value" sid="706552050571110" type="System">
-                            <param id="0" name="Variable">enableCollisions</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="616076207118829">
                     <conditions>
-                        <condition id="-22" name="Else" sid="740870270403324" type="System" />
-                        <condition id="-19" name="Pick all" sid="989615270168952" type="System">
-                            <param id="0" name="Object">Player</param>
+                        <condition id="-14" name="Compare variable" sid="740870270403324" type="System">
+                            <param id="0" name="Variable">currentAction</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-1</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -229,10 +385,6 @@
                         </action>
                         <action behavior="Hover" id="11" name="Set enabled" sid="541689657465210" type="Player">
                             <param id="0" name="State">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="412632031851232" type="System">
-                            <param id="0" name="Variable">enableCollisions</param>
-                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -253,24 +405,25 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">0</param>
                         </condition>
-                        <condition id="-19" name="Pick all" sid="571524168213735" type="System">
-                            <param id="0" name="Object">NormalDimension</param>
-                        </condition>
                     </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="547462112488021" type="System">
-                            <param id="0" name="Variable">positionAux</param>
-                            <param id="1" name="Value">NormalDimension.dimensionPosition</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="188974842874934" type="NormalDimension">
-                            <param id="0" name="Instance variable">dimensionPosition</param>
-                            <param id="1" name="Value">Function.Param(2)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="944007011040607" type="System">
-                            <param id="0" name="Variable">currentAction</param>
-                            <param id="1" name="Value">JUMP_ACTION</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="642315225750305">
+                            <conditions>
+                                <condition id="-24" name="For Each (ordered)" sid="534012143845265" type="System">
+                                    <param id="0" name="Object">NormalDimension</param>
+                                    <param id="1" name="Expression">0</param>
+                                    <param id="2" name="Order">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="590532978433540" type="Function">
+                                    <param id="0" name="Name">&quot;move&quot;</param>
+                                    <param id="1" name="Parameter {n}">NormalDimension.UID{###}Function.Param(0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block sid="803122006239817">
                     <conditions>
@@ -279,28 +432,25 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
                         </condition>
-                        <condition id="-19" name="Pick all" sid="528775731465425" type="System">
-                            <param id="0" name="Object">SeaDimension</param>
-                        </condition>
                     </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="602160455392629" type="System">
-                            <param id="0" name="Variable">positionAux</param>
-                            <param id="1" name="Value">NormalDimension.dimensionPosition</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="749457451067288" type="SeaDimension">
-                            <param id="0" name="Instance variable">dimensionPosition</param>
-                            <param id="1" name="Value">Function.Param(2)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="855244040649145" type="System">
-                            <param id="0" name="Variable">currentAction</param>
-                            <param id="1" name="Value">HOVER_ACTION</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="405229057211852" type="playerSea">
-                            <param id="0" name="Animation">&quot;holeOpen&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="141427974880424">
+                            <conditions>
+                                <condition id="-24" name="For Each (ordered)" sid="179667252263524" type="System">
+                                    <param id="0" name="Object">SeaDimension</param>
+                                    <param id="1" name="Expression">0</param>
+                                    <param id="2" name="Order">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="840649431896122" type="Function">
+                                    <param id="0" name="Name">&quot;move&quot;</param>
+                                    <param id="1" name="Parameter {n}">SeaDimension.UID{###}Function.Param(0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-block>
@@ -312,12 +462,15 @@
             </conditions>
             <actions />
             <sub-events>
-                <event-block sid="924403919869878">
+                <event-block sid="904484302464937">
                     <conditions>
-                        <condition id="1" name="Compare parameter" sid="856910731555108" type="Function">
-                            <param id="0" name="Index">1</param>
+                        <condition id="-11" name="For Each" sid="396504448251191" type="System">
+                            <param id="0" name="Object">WindowDetection</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="326112398368617" type="WindowDetection">
+                            <param id="0" name="Instance variable">windowDetectionDimension</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">0</param>
+                            <param id="2" name="Value">Function.Param(1)</param>
                         </condition>
                     </conditions>
                     <actions />
@@ -331,13 +484,9 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="450543156320439" type="System">
-                                    <param id="0" name="Variable">x</param>
-                                    <param id="1" name="Value">NormalWindowDetection.X+NormalWindowDetection.Width</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="267279156986546" type="System">
-                                    <param id="0" name="Variable">y</param>
-                                    <param id="1" name="Value">NormalWindowDetection.Y+NormalWindowDetection.Height</param>
+                                <action id="-9" name="Set value" sid="418737276384956" type="System">
+                                    <param id="0" name="Variable">xNew</param>
+                                    <param id="1" name="Value">WindowDetection.X </param>
                                 </action>
                             </actions>
                         </event-block>
@@ -349,93 +498,85 @@
                                     <param id="2" name="Value">1</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="925198120664240" type="System">
-                                    <param id="0" name="Variable">width</param>
-                                    <param id="1" name="Value">NormalWindowDetection.Width</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="522439169837888" type="System">
-                                    <param id="0" name="Variable">height</param>
-                                    <param id="1" name="Value">NormalWindowDetection.Height</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="153752509132998" type="System">
-                                    <param id="0" name="Variable">x1</param>
-                                    <param id="1" name="Value">NormalWindowDetection.X</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="380996680725632" type="System">
-                                    <param id="0" name="Variable">y1</param>
-                                    <param id="1" name="Value">NormalWindowDetection.Y</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="525782745137910" type="System">
-                                    <param id="0" name="Variable">currentAction</param>
-                                    <param id="1" name="Value">JUMP_ACTION</param>
-                                </action>
-                            </actions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="419375037726192">
+                                    <conditions>
+                                        <condition id="-33" name="Pick by comparison" sid="349160017360959" type="System">
+                                            <param id="0" name="Object">Player</param>
+                                            <param id="1" name="Expression">Player.dimension</param>
+                                            <param id="2" name="Comparison">0</param>
+                                            <param id="3" name="Value">Function.Param(1)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="919453343256673" type="Player">
+                                            <param id="0" name="Animation">&quot;holeOpen&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="202202409917782">
+            </sub-events>
+        </event-block>
+        <event-block sid="877339651503194">
+            <conditions>
+                <condition id="0" name="On function" sid="872300806280659" type="Function">
+                    <param id="0" name="Name">&quot;move&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="894455974058720">
                     <conditions>
-                        <condition id="1" name="Compare parameter" sid="646899149503886" type="Function">
-                            <param id="0" name="Index">1</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
+                        <condition id="-14" name="Pick by unique ID" sid="876124432202036" type="Everything">
+                            <param id="0" name="Unique ID">Function.Param(0)</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="4" name="Set animation" sid="888014906010313" type="playerSea">
-                            <param id="0" name="Animation">&quot;holeOpen&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
+                    <actions />
                     <sub-events>
-                        <event-block sid="147574888413920">
+                        <event-block sid="932161180721934">
                             <conditions>
-                                <condition id="1" name="Compare parameter" sid="279330387577774" type="Function">
-                                    <param id="0" name="Index">0</param>
+                                <condition id="1" name="Compare parameter" sid="607524335066420" type="Function">
+                                    <param id="0" name="Index">1</param>
                                     <param id="1" name="Comparison">0</param>
                                     <param id="2" name="Value">0</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="704047384208797" type="System">
-                                    <param id="0" name="Variable">x</param>
-                                    <param id="1" name="Value">SeaWindowDetection.X+SeaWindowDetection.Width</param>
+                                <action id="-5" name="Set width" sid="697768795405261" type="Everything">
+                                    <param id="0" name="Width">((widthMain*Everything.Width) / widthNew) </param>
                                 </action>
-                                <action id="-9" name="Set value" sid="393024439190734" type="System">
-                                    <param id="0" name="Variable">y</param>
-                                    <param id="1" name="Value">SeaWindowDetection.Y+SeaWindowDetection.Height</param>
+                                <action id="-6" name="Set height" sid="207108023396575" type="Everything">
+                                    <param id="0" name="Height">((heightMain*Everything.Height) / backDimensions.Height)</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="396252797135026" type="Everything">
+                                    <param id="0" name="X">((widthMain*Everything.X) / widthNew) - xMain</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="114963267969342" type="Everything">
+                                    <param id="0" name="Y">((heightMain*Everything.Y) / backDimensions.Height) - yNew</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="516236675600383">
+                        <event-block sid="980890699325075">
                             <conditions>
-                                <condition id="1" name="Compare parameter" sid="368378942736355" type="Function">
-                                    <param id="0" name="Index">0</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">1</param>
-                                </condition>
+                                <condition id="-22" name="Else" sid="383417358359679" type="System" />
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="972905530678468" type="System">
-                                    <param id="0" name="Variable">width</param>
-                                    <param id="1" name="Value">SeaWindowDetection.Width</param>
+                                <action id="-5" name="Set width" sid="960183932241061" type="Everything">
+                                    <param id="0" name="Width">((widthNew*Everything.Width) / widthMain)</param>
                                 </action>
-                                <action id="-9" name="Set value" sid="186378240656866" type="System">
-                                    <param id="0" name="Variable">height</param>
-                                    <param id="1" name="Value">SeaWindowDetection.Height</param>
+                                <action id="-6" name="Set height" sid="286115074411360" type="Everything">
+                                    <param id="0" name="Height">((backDimensions.Height*Everything.Height) / heightMain)</param>
                                 </action>
-                                <action id="-9" name="Set value" sid="961847315592276" type="System">
-                                    <param id="0" name="Variable">x1</param>
-                                    <param id="1" name="Value">SeaWindowDetection.X</param>
+                                <action id="-1" name="Set X" sid="745751671874784" type="Everything">
+                                    <param id="0" name="X">(xNew - (widthNew / 2))+((widthNew*Everything.X) / widthMain)</param>
                                 </action>
-                                <action id="-9" name="Set value" sid="542801260368657" type="System">
-                                    <param id="0" name="Variable">y1</param>
-                                    <param id="1" name="Value">SeaWindowDetection.Y</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="268580657208367" type="System">
-                                    <param id="0" name="Variable">currentAction</param>
-                                    <param id="1" name="Value">HOVER_ACTION</param>
+                                <action id="-2" name="Set Y" sid="963286549580308" type="Everything">
+                                    <param id="0" name="Y">(yNew - ( heightNew / 2)) + ((heightNew*Everything.Y) / heightMain)</param>
                                 </action>
                             </actions>
                         </event-block>
