@@ -5,6 +5,7 @@
     <events>
         <variable constant="1" name="JUMP_ACTION" sid="862597588038337" static="0" type="number">0</variable>
         <variable constant="1" name="HOVER_ACTION" sid="677523695553473" static="0" type="number">1</variable>
+        <variable constant="1" name="MAX_VELOCITY" sid="995637491257181" static="0" type="number">500</variable>
         <variable constant="0" name="enableCollisions" sid="398567154084057" static="0" type="number">1</variable>
         <variable constant="1" name="DIMENSION_CHANGE_TIME" sid="571721184049872" static="0" type="number">7</variable>
         <variable constant="0" name="dimensionChangeLeftTime" sid="454754905378664" static="0" type="number">0</variable>

@@ -3,7 +3,18 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>NormalDimensionEventSheet</name>
     <events>
-        <variable constant="1" name="NORMAL_DIMENSION_PUNTUATION" sid="607933237517883" static="0" type="number">0</variable>
+        <variable constant="1" name="NORMAL_DIMENSION_PUNTUATION" sid="607933237517883" static="0" type="number">0.5</variable>
+        <event-block sid="933735822905249">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="241667474350837" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="476864839705863" type="NormalBackground">
+                    <param id="0" name="Animation">&quot;City&quot;&amp;int(random(1, 5))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="803206900080621">
             <conditions>
                 <condition id="1" name="Is overlapping another object" sid="683806076175575" type="NormalDimension">
@@ -28,5 +39,318 @@
                 </action>
             </actions>
         </event-block>
+        <variable constant="0" name="normalRandom" sid="381784803030281" static="0" type="number">0</variable>
+        <variable constant="0" name="normalEnemyWidth" sid="424494572179545" static="0" type="number">0</variable>
+        <variable constant="0" name="normalEnemyHeight" sid="161196618347560" static="0" type="number">0</variable>
+        <event-group description="" sid="431538516801321" title="Normal Enemy Generator">
+            <sub-events>
+                <event-block sid="811636915111875">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="554602021285969" type="System">
+                            <param id="0" name="Interval (seconds)">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="923513567080945" type="System">
+                            <param id="0" name="Variable">normalRandom</param>
+                            <param id="1" name="Value">random(0, 1)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="379526355017041">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="976723117328053" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.25</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="592598277861604" type="System">
+                                    <param id="0" name="Object">soldier</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="451115755255399" type="System">
+                                    <param id="0" name="Variable">normalEnemyWidth</param>
+                                    <param id="1" name="Value">soldier.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="640174240424275" type="System">
+                                    <param id="0" name="Variable">normalEnemyHeight</param>
+                                    <param id="1" name="Value">soldier.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="829799080472080" type="System">
+                                    <param id="0" name="Object to create">soldier</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="501570360125349" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">soldier.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalBottomSpawner.X{###}NormalBottomSpawner.Y{###}&quot;soldier&quot;{###}2{###}0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="963144380732722">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="716094614771057" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.25</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="841513073109796" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.45</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="412107241301793" type="System">
+                                    <param id="0" name="Object">tank</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="705835040774439" type="System">
+                                    <param id="0" name="Variable">normalEnemyWidth</param>
+                                    <param id="1" name="Value">tank.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="915683499424414" type="System">
+                                    <param id="0" name="Variable">normalEnemyHeight</param>
+                                    <param id="1" name="Value">tank.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="295076746912608" type="System">
+                                    <param id="0" name="Object to create">tank</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="408709026399942" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">tank.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalBottomSpawner.X{###}NormalBottomSpawner.Y{###}&quot;tank&quot;{###}2{###}0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="306858299638465">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="189475769511342" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.45</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="433299219788374" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.55</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="110498805335604" type="System">
+                                    <param id="0" name="Object">airplane</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="394833438608886" type="System">
+                                    <param id="0" name="Variable">normalEnemyWidth</param>
+                                    <param id="1" name="Value">airplane.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="506230624520778" type="System">
+                                    <param id="0" name="Variable">normalEnemyHeight</param>
+                                    <param id="1" name="Value">airplane.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="564326322324630" type="System">
+                                    <param id="0" name="Object to create">airplane</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="432210011813717">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="728485703538213" type="System">
+                                            <param id="0" name="First value">random(2)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="600410665102631" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">airplane.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalTopSpawner.X{###}NormalTopSpawner.Y{###}&quot;airplane&quot;{###}21{###}0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="675888884199505">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="435549154563338" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="945692833201735" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">airplane.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalMiddleSpawner.X{###}NormalMiddleSpawner.Y{###}&quot;airplane&quot;{###}21{###}0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="610658545626968">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="428532191647272" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.55</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="290720435717240" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.65</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="752675363605125" type="System">
+                                    <param id="0" name="Object">helicopter</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="733812353863729" type="System">
+                                    <param id="0" name="Variable">normalEnemyWidth</param>
+                                    <param id="1" name="Value">helicopter.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="588648269595721" type="System">
+                                    <param id="0" name="Variable">normalEnemyHeight</param>
+                                    <param id="1" name="Value">helicopter.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="505356088306660" type="System">
+                                    <param id="0" name="Object to create">helicopter</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="310224874612714">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="170737408573775" type="System">
+                                            <param id="0" name="First value">random(2)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="960113992558117" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">helicopter.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalTopSpawner.X{###}NormalTopSpawner.Y{###}&quot;helicopter&quot;{###}2{###}0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="648815763569020">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="150329994322609" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="486626291917697" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">helicopter.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalMiddleSpawner.X{###}NormalMiddleSpawner.Y{###}&quot;helicopter&quot;{###}2{###}0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="258783534778503">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="180452847489490" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.65</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="882653463770265" type="System">
+                                    <param id="0" name="Variable">normalRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.90</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="727775987248564" type="System">
+                                    <param id="0" name="Object">police</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="925862014110561" type="System">
+                                    <param id="0" name="Variable">normalEnemyWidth</param>
+                                    <param id="1" name="Value">police.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="258755669432969" type="System">
+                                    <param id="0" name="Variable">normalEnemyHeight</param>
+                                    <param id="1" name="Value">police.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="903296362234653" type="System">
+                                    <param id="0" name="Object to create">police</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="642261232624023" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">police.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalBottomSpawner.X{###}NormalBottomSpawner.Y{###}&quot;police&quot;{###}4{###}0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="969268321090962" title="Normal Enemy behaviour">
+            <sub-events>
+                <event-block sid="536531281431321">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="569517370710156" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-11" name="For Each" sid="580503646265308" type="System">
+                            <param id="0" name="Object">helicopter</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="290203711453027">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="322200035509306" type="helicopter">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="X co-ordinate">playerNormal.X + playerNormal.Width</param>
+                                </condition>
+                                <condition id="-1" name="Compare X" sid="394398573939823" type="helicopter">
+                                    <param id="0" name="Comparison">3</param>
+                                    <param id="1" name="X co-ordinate">playerNormal.X + 2*playerNormal.Width</param>
+                                </condition>
+                                <condition id="-2" name="Compare Y" sid="260229281560350" type="helicopter">
+                                    <param id="0" name="Comparison">3</param>
+                                    <param id="1" name="Y co-ordinate">playerNormal.Y</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="966421286669571" type="helicopter">
+                                    <param id="0" name="Instance variable">netSend</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="844439762692304" type="System">
+                                    <param id="0" name="Object to create">net</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">helicopter.X</param>
+                                    <param id="3" name="Y">helicopter.Y</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="983035807827952" type="helicopter">
+                                    <param id="0" name="Instance variable">netSend</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="878394779754275">
+                    <conditions>
+                        <condition behavior="Platform" id="9" name="On landed" sid="303959570498309" type="net" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="925987081064438" type="net" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>

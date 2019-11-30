@@ -14,12 +14,17 @@
             </conditions>
             <actions />
             <sub-events>
-                <event-block any="1" sid="872437033666197">
+                <event-block sid="872437033666197">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="307272373233183" type="System">
                             <param id="0" name="Variable">currentAction</param>
                             <param id="1" name="Comparison">1</param>
                             <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="125191965828715" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">currentDimensionAux</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -63,7 +68,7 @@
                             <conditions />
                             <actions>
                                 <action id="0" name="Set text" sid="671041352481664" type="txtPuntuation">
-                                    <param id="0" name="Text">txtPuntuation.puntuation</param>
+                                    <param id="0" name="Text">floor(txtPuntuation.puntuation)</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -80,29 +85,53 @@
                                     <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action id="-12" name="Subtract from" sid="258287633794351" type="tbOxigen">
-                                    <param id="0" name="Instance variable">air</param>
-                                    <param id="1" name="Value">3</param>
-                                </action>
-                                <action id="-5" name="Set width" sid="822742112468400" type="tbOxigen">
-                                    <param id="0" name="Width">tbOxigen.air</param>
-                                </action>
-                            </actions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="821848959606847">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="252396481524980" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-12" name="Subtract from" sid="258287633794351" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Value">3</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="822742112468400" type="tbOxigen">
+                                            <param id="0" name="Width">tbOxigen.air</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                         <event-block sid="648599673612868">
                             <conditions>
                                 <condition id="-22" name="Else" sid="114670329000985" type="System" />
                             </conditions>
-                            <actions>
-                                <action id="-11" name="Add to" sid="308793362263123" type="tbOxigen">
-                                    <param id="0" name="Instance variable">air</param>
-                                    <param id="1" name="Value">1.5</param>
-                                </action>
-                                <action id="-5" name="Set width" sid="146512354410512" type="tbOxigen">
-                                    <param id="0" name="Width">tbOxigen.air</param>
-                                </action>
-                            </actions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="872210606378241">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="814555993565205" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="308793362263123" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Value">1.5</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="146512354410512" type="tbOxigen">
+                                            <param id="0" name="Width">tbOxigen.air</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -152,5 +181,149 @@
                 </event-block>
             </sub-events>
         </event-block>
+        <event-group description="" sid="593532287046475" title="Enemies common behaviour">
+            <sub-events>
+                <event-block sid="208044853154281">
+                    <conditions>
+                        <condition id="-19" name="Pick all" sid="138677958867577" type="System">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                        <condition id="-16" name="Is on layer" sid="850850049270617" type="Enemy">
+                            <param id="0" name="Layer">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="396325233365286" type="Enemy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="683307748039198">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="944840337907222" type="Enemy">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="747607492008940" type="System">
+                            <param id="0" name="Variable">currentAction</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="765666153754227" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">currentDimensionAux</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="975101856868159" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Player.dimension</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="176450698370554" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;ENTRA&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="641376641884934">
+                    <conditions>
+                        <condition id="0" name="On function" sid="717329867619087" type="Function">
+                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="495157363784897" type="Everything">
+                            <param id="0" name="Unique ID">Function.Param(0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-7" name="Set size" sid="656724525505882" type="bottomAnchor">
+                            <param id="0" name="Width">Function.Param(1)</param>
+                            <param id="1" name="Height">Function.Param(2)</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="749710764080540" type="bottomAnchor">
+                            <param id="0" name="Animation">Function.Param(5)&amp;random(1, Function.Param(6))</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="120771909862327" type="Everything">
+                            <param id="0" name="X">Function.Param(3)</param>
+                            <param id="1" name="Y">Function.Param(4)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="807988250088764">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="944618424206592" type="Enemy">
+                                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="762835467605441">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="940657130277774" type="Function">
+                                            <param id="0" name="Index">7</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">currentDimension</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="239495160219892" type="Enemy">
+                                            <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="156544502021229">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="594177079544270" type="Function">
+                                            <param id="0" name="Index">7</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Value">currentDimension</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="726865916790983" type="Enemy">
+                                            <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity) / 3</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="544782815635117" title="Background common behaviour">
+            <sub-events>
+                <event-block sid="929631278879739">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="559938349869080" type="System" />
+                        <condition id="-11" name="For Each" sid="264019605253499" type="System">
+                            <param id="0" name="Object">Backgrounds</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="334613066972411" type="Backgrounds">
+                            <param id="0" name="X">Backgrounds.X - (dt*100)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="388773237864433">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="268197463820860" type="System">
+                            <param id="0" name="Object">Backgrounds</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="593908354082343" type="Backgrounds">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="385882593182946" type="Backgrounds">
+                            <param id="0" name="X">Backgrounds.Width / 2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>

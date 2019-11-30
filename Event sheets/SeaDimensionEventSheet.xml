@@ -3,7 +3,18 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>SeaDimensionEventSheet</name>
     <events>
-        <variable constant="1" name="SEA_DIMENSION_PUNTUATION" sid="335407280921640" static="0" type="number">0</variable>
+        <variable constant="1" name="SEA_DIMENSION_PUNTUATION" sid="335407280921640" static="0" type="number">1</variable>
+        <event-block sid="331877984251637">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="864231641860214" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="435836823548306" type="SeaBackground">
+                    <param id="0" name="Animation">&quot;Ocean&quot;&amp;int(random(1, 5))</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="877559953960785">
             <conditions>
                 <condition id="1" name="Is overlapping another object" sid="677280831604300" type="SeaDimension">
@@ -28,5 +39,291 @@
                 </action>
             </actions>
         </event-block>
+        <variable constant="0" name="seaRandom" sid="796700029163605" static="0" type="number">0</variable>
+        <variable constant="0" name="seaEnemyWidth" sid="556354353299025" static="0" type="number">0</variable>
+        <variable constant="0" name="seaEnemyHeight" sid="133766444063753" static="0" type="number">0</variable>
+        <event-group description="" sid="702572029575862" title="Sea Enemy Generator">
+            <sub-events>
+                <event-block sid="199157810135292">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="200025105660003" type="System">
+                            <param id="0" name="Interval (seconds)">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="373143921028754" type="System">
+                            <param id="0" name="Variable">seaRandom</param>
+                            <param id="1" name="Value">random(0, 1)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="864851057487460">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="812414506547711" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.1</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="864933935800206" type="System">
+                                    <param id="0" name="Object">bomb</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="819620322651829" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">bomb.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="577307417010616" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">bomb.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="383278708076606" type="System">
+                                    <param id="0" name="Object to create">bomb</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="625646793462801" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">soldier.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaBottomSpawner.X{###}random(SeaTopSpawner.Y, SeaBottomSpawner.Y){###}&quot;bomb&quot;{###}2{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="613431670050955">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="746841478979594" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="508835831899851" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.2</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="754685108975649" type="System">
+                                    <param id="0" name="Object">barrel</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="947721698975592" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">barrel.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="773163375626859" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">barrel.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="206046851478442" type="System">
+                                    <param id="0" name="Object to create">barrel</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="936999978438783" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">barrel.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaBottomSpawner.X{###}random(SeaTopSpawner.Y, SeaBottomSpawner.Y){###}&quot;barriel&quot;{###}2{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="366385405967765">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="561635229573251" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.2</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="564076762903081" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.25</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="654773780544492" type="System">
+                                    <param id="0" name="Object">bottomAnchor</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="503139559832815" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">bottomAnchor.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="282778090329857" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">bottomAnchor.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="353428861112772" type="System">
+                                    <param id="0" name="Object to create">bottomAnchor</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="768050134759896" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">bottomAnchor.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaBottomSpawner.X{###}SeaBottomSpawner.Y{###}&quot;anchor&quot;{###}2{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="425782260799387">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="568861894658065" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.25</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="234714600176801" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.3</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="711495096804873" type="System">
+                                    <param id="0" name="Object">topAnchor</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="503322289880206" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">topAnchor.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="282445105726121" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">topAnchor.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="760625847499297" type="System">
+                                    <param id="0" name="Object to create">topAnchor</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="794846508350554" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">topAnchor.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaTopSpawner.X{###}SeaTopSpawner.Y{###}&quot;anchor&quot;{###}2{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="203937783678689">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="295597960395824" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.3</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="464980375341101" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.35</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="452158441781871" type="System">
+                                    <param id="0" name="Object">rock</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="607287295634707" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">rock.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="834935215448461" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">rock.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="415533433967093" type="System">
+                                    <param id="0" name="Object to create">rock</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="375459032077751">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="146120356216615" type="System">
+                                            <param id="0" name="First value">random(2)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="286341014124306" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">rock.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaTopSpawner.X{###}SeaTopSpawner.Y{###}&quot;rock&quot;{###}3{###}1</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="596746173964754" type="rock">
+                                            <param id="0" name="Angle">180</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="467022647921961">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="153265898075030" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="120608913824921" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">rock.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaBottomSpawner.X{###}SeaBottomSpawner.Y{###}&quot;anchor&quot;{###}7{###}1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="448144819370561">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="639679432950771" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.35</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="904173082257605" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.45</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="863527788726666" type="System">
+                                    <param id="0" name="Object">shark</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="589788207592650" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">shark.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="178894908391126" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">shark.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="556088580302568" type="System">
+                                    <param id="0" name="Object to create">shark</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="342124862602049" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">shark.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaMiddleSpawner.X{###}playerSea.Y{###}&quot;shark&quot;{###}9{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="942780586897403" title="Sea Enemy behaviour">
+            <sub-events>
+                <event-block sid="703133712280693">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="419564945973505" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>

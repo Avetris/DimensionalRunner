@@ -10,11 +10,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="0">Layout 1</layout>
-        <event-sheet order="1">GlobalEventSheet</event-sheet>
-        <event-sheet order="2">NormalDimensionEventSheet</event-sheet>
-        <event-sheet order="3">SeaDimensionEventSheet</event-sheet>
-        <event-sheet order="4">DimensionChangeEventSheet</event-sheet>
+        <layout active="1" order="1">Layout 1</layout>
+        <event-sheet order="2">GlobalEventSheet</event-sheet>
+        <event-sheet order="3">NormalDimensionEventSheet</event-sheet>
+        <event-sheet order="4">SeaDimensionEventSheet</event-sheet>
+        <event-sheet order="5">DimensionChangeEventSheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -22,19 +22,23 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="0">
+    <families-expanded root="1">
         <family expanded="0" name="NormalDimension" />
         <family expanded="0" name="SeaDimension" />
         <family expanded="0" name="Player" />
         <family expanded="0" name="WindowDetection" />
         <family expanded="0" name="Everything" />
+        <family expanded="0" name="Enemy" />
+        <family expanded="1" name="Backgrounds" />
     </families-expanded>
     <folders-expanded>
-        <folder expanded="0" path="object-folder/" />
+        <folder expanded="1" path="object-folder/" />
         <folder expanded="0" path="object-folder/HUD/" />
         <folder expanded="0" path="object-folder/Normal Dimension/" />
-        <folder expanded="0" path="object-folder/SeaDimension/" />
-        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="object-folder/Normal Dimension/Enemies/" />
+        <folder expanded="1" path="object-folder/SeaDimension/" />
+        <folder expanded="1" path="object-folder/SeaDimension/Enemies/" />
+        <folder expanded="0" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
         <folder expanded="0" path="file-folder/" />
         <folder expanded="1" path="sound-folder/" />
@@ -42,18 +46,30 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="file-folder/Icons/" />
         <folder expanded="1" path="animation-folder/Sprite2/" />
         <folder expanded="1" path="animation-folder/ivOxigen/" />
+        <folder expanded="1" path="animation-folder/soldier/" />
+        <folder expanded="1" path="animation-folder/tank/" />
+        <folder expanded="1" path="animation-folder/airplane/" />
+        <folder expanded="1" path="animation-folder/helicopter/" />
+        <folder expanded="1" path="animation-folder/police/" />
+        <folder expanded="1" path="animation-folder/net/" />
         <folder expanded="1" path="animation-folder/playerNormal/" />
         <folder expanded="1" path="animation-folder/NormalWindowDetection/" />
-        <folder expanded="1" path="animation-folder/Sprite/" />
         <folder expanded="1" path="animation-folder/NormalTopSpawner/" />
         <folder expanded="1" path="animation-folder/NormalMiddleSpawner/" />
         <folder expanded="1" path="animation-folder/NormalBottomSpawner/" />
-        <folder expanded="1" path="animation-folder/Sprite3/" />
+        <folder expanded="1" path="animation-folder/NormalBackground/" />
+        <folder expanded="1" path="animation-folder/bomb/" />
+        <folder expanded="1" path="animation-folder/barrel/" />
+        <folder expanded="1" path="animation-folder/bottomAnchor/" />
+        <folder expanded="1" path="animation-folder/rock/" />
+        <folder expanded="1" path="animation-folder/topAnchor/" />
+        <folder expanded="1" path="animation-folder/shark/" />
         <folder expanded="1" path="animation-folder/SeaWindowDetection/" />
         <folder expanded="1" path="animation-folder/playerSea/" />
         <folder expanded="1" path="animation-folder/SeaBottomSpawner/" />
         <folder expanded="1" path="animation-folder/SeaMiddleSpawner/" />
         <folder expanded="1" path="animation-folder/SeaTopSpawner/" />
+        <folder expanded="1" path="animation-folder/SeaBackground/" />
         <folder expanded="1" path="animation-folder/MiddleGround/" />
         <folder expanded="1" path="animation-folder/Suelo2/" />
         <folder expanded="1" path="animation-folder/backDimensions/" />
