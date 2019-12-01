@@ -22,7 +22,7 @@
         <variable constant="0" name="widthNew" sid="285205806824954" static="0" type="number">0</variable>
         <variable constant="0" name="heightNew" sid="467488778342084" static="0" type="number">0</variable>
         <variable constant="0" name="dimensionInitialization" sid="537008797044780" static="0" type="number">0</variable>
-        <variable constant="0" name="totalDimensions" sid="183805900099794" static="0" type="number">3</variable>
+        <variable constant="0" name="totalDimensions" sid="183805900099794" static="0" type="number">1</variable>
         <event-block sid="113181838577138">
             <conditions>
                 <condition id="-25" name="On loader layout complete" sid="205975653204135" type="System" />
@@ -582,6 +582,54 @@
                             </actions>
                         </event-block>
                     </sub-events>
+                </event-block>
+                <event-block sid="102114176632558">
+                    <conditions>
+                        <condition id="-14" name="Pick by unique ID" sid="143291020927412" type="Enemy">
+                            <param id="0" name="Unique ID">Function.Param(0)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="503097686072012">
+                            <conditions>
+                                <condition id="1" name="Compare parameter" sid="557563717276724" type="Function">
+                                    <param id="0" name="Index">1</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentDimensionAux</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="1" name="Set max speed" sid="215049901028757" type="Enemy">
+                                    <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="328617329068967">
+                            <conditions>
+                                <condition id="1" name="Compare parameter" sid="251951767542848" type="Function">
+                                    <param id="0" name="Index">1</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">currentDimensionAux</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="1" name="Set max speed" sid="953587423307226" type="Enemy">
+                                    <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity) / totalDimensions</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="403480436340915">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="630009002515968" type="System">
+                            <param id="0" name="Variable">xMain</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">xNew</param>
+                        </condition>
+                    </conditions>
+                    <actions />
                 </event-block>
             </sub-events>
         </event-block>

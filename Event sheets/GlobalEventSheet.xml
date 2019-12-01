@@ -189,7 +189,7 @@
                             <param id="0" name="Object">Enemy</param>
                         </condition>
                         <condition id="-16" name="Is on layer" sid="850850049270617" type="Enemy">
-                            <param id="0" name="Layer">1</param>
+                            <param id="0" name="Layer">2</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -236,12 +236,12 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-7" name="Set size" sid="656724525505882" type="bottomAnchor">
+                        <action id="-7" name="Set size" sid="656724525505882" type="Everything">
                             <param id="0" name="Width">Function.Param(1)</param>
                             <param id="1" name="Height">Function.Param(2)</param>
                         </action>
-                        <action id="4" name="Set animation" sid="749710764080540" type="bottomAnchor">
-                            <param id="0" name="Animation">Function.Param(5)&amp;random(1, Function.Param(6))</param>
+                        <action id="4" name="Set animation" sid="749710764080540" type="Everything">
+                            <param id="0" name="Animation">Function.Param(5)&amp;round(random(1, Function.Param(6)))</param>
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="-3" name="Set position" sid="120771909862327" type="Everything">
@@ -282,7 +282,7 @@
                                     </conditions>
                                     <actions>
                                         <action behavior="Platform" id="1" name="Set max speed" sid="726865916790983" type="Enemy">
-                                            <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity) / 3</param>
+                                            <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity) / totalDimensions</param>
                                         </action>
                                     </actions>
                                 </event-block>

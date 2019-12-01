@@ -80,7 +80,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="829799080472080" type="System">
                                     <param id="0" name="Object to create">soldier</param>
-                                    <param id="1" name="Layer">1</param>
+                                    <param id="1" name="Layer">2</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -118,7 +118,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="295076746912608" type="System">
                                     <param id="0" name="Object to create">tank</param>
-                                    <param id="1" name="Layer">1</param>
+                                    <param id="1" name="Layer">2</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -156,7 +156,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="564326322324630" type="System">
                                     <param id="0" name="Object to create">airplane</param>
-                                    <param id="1" name="Layer">1</param>
+                                    <param id="1" name="Layer">2</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -218,7 +218,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="505356088306660" type="System">
                                     <param id="0" name="Object to create">helicopter</param>
-                                    <param id="1" name="Layer">1</param>
+                                    <param id="1" name="Layer">2</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -280,7 +280,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="903296362234653" type="System">
                                     <param id="0" name="Object to create">police</param>
-                                    <param id="1" name="Layer">1</param>
+                                    <param id="1" name="Layer">2</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -306,6 +306,11 @@
                         <condition id="-11" name="For Each" sid="580503646265308" type="System">
                             <param id="0" name="Object">helicopter</param>
                         </condition>
+                        <condition id="-14" name="Compare variable" sid="879661373875915" type="System">
+                            <param id="0" name="Variable">currentAction</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
                     </conditions>
                     <actions />
                     <sub-events>
@@ -330,7 +335,7 @@
                             <actions>
                                 <action id="-3" name="Create object" sid="844439762692304" type="System">
                                     <param id="0" name="Object to create">net</param>
-                                    <param id="1" name="Layer">1</param>
+                                    <param id="1" name="Layer">2</param>
                                     <param id="2" name="X">helicopter.X</param>
                                     <param id="3" name="Y">helicopter.Y</param>
                                 </action>
