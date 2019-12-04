@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>MainMenuEventSheet</name>
+    <events>
+        <event-block sid="971861042216726">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="923813373690397" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="883952160369905" type="CSS_Text">
+                    <param id="0" name="Family name">&quot;MyButton&quot;</param>
+                    <param id="1" name="CSS URL">&quot;style.css&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="780824753857702">
+            <conditions>
+                <condition id="0" name="On clicked" sid="849097764392613" type="Button" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="301338398328259">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="478801487797628" type="System">
+                            <param id="0" name="First value">Button.IID</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="956013328952264" type="System">
+                            <param id="0" name="Layout">GameLayout</param>
+                        </action>
+                        <action id="-26" name="Restart layout" sid="542414119903563" type="System" />
+                    </actions>
+                </event-block>
+                <event-block sid="970347921714054">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="640016907273352" type="System">
+                            <param id="0" name="First value">Button.IID</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Close" sid="228205434810472" type="Browser" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -6,7 +6,7 @@
         <variable constant="1" name="SEA_DIMENSION_PUNTUATION" sid="335407280921640" static="0" type="number">1</variable>
         <event-block sid="331877984251637">
             <conditions>
-                <condition id="-25" name="On loader layout complete" sid="864231641860214" type="System" />
+                <condition id="-2" name="On start of layout" sid="864231641860214" type="System" />
             </conditions>
             <actions>
                 <action id="4" name="Set animation" sid="435836823548306" type="SeaBackground">
@@ -47,7 +47,12 @@
                 <event-block sid="199157810135292">
                     <conditions>
                         <condition id="-6" name="Every X seconds" sid="200025105660003" type="System">
-                            <param id="0" name="Interval (seconds)">1.5</param>
+                            <param id="0" name="Interval (seconds)">enemyCreationInterval</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="764999233525127" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -386,6 +391,184 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <event-block sid="636908183935052">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="776848477722991" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.60</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="947899900638254" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.70</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="188015764026611" type="System">
+                                    <param id="0" name="Object">crab</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="540050066790226" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">crab.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="332761026960969" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">crab.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="285919416298310" type="System">
+                                    <param id="0" name="Object to create">crab</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="106458781734300" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">crab.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaBottomSpawner.X{###}SeaBottomSpawner.Y{###}&quot;crab&quot;{###}1{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="284328421685562">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="477669309661504" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.60</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="178277205858977" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.70</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="981610488075340" type="System">
+                                    <param id="0" name="Object">octopus</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="306723909144534" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">octopus.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="745296092057663" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">octopus.Height</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="476694285965113" type="System">
+                                    <param id="0" name="Object to create">octopus</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">0</param>
+                                    <param id="3" name="Y">0</param>
+                                </action>
+                                <action id="0" name="Call function" sid="470186674540285" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">octopus.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaMiddleSpawner.X{###}random(SeaTopSpawner.Y, SeaBottomSpawner.Y){###}&quot;octopus&quot;{###}1{###}1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="225371212924871">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="602479613288627" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.70</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="440850223316206" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.75</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="119065904062391" type="System">
+                                    <param id="0" name="Object">piranha</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="289881252225098" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">piranha.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="126159828046693" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">piranha.Height</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="881332480336532">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="647344061482632" type="System">
+                                            <param id="0" name="Name">&quot;number&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">int(random(1, 3))</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="220421124172951" type="System">
+                                            <param id="0" name="Object to create">piranha</param>
+                                            <param id="1" name="Layer">2</param>
+                                            <param id="2" name="X">0</param>
+                                            <param id="3" name="Y">0</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="790107079134873" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">piranha.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaMiddleSpawner.X{###}random(SeaTopSpawner.Y, SeaBottomSpawner.Y){###}&quot;piranha&quot;{###}1{###}1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="206612395449980">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="211309600313635" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">0.70</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="315411030921833" type="System">
+                                    <param id="0" name="Variable">seaRandom</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0.75</param>
+                                </condition>
+                                <condition id="-13" name="Pick nth instance" sid="174815830652790" type="System">
+                                    <param id="0" name="Object">piranha</param>
+                                    <param id="1" name="Instance">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="897705476271329" type="System">
+                                    <param id="0" name="Variable">seaEnemyWidth</param>
+                                    <param id="1" name="Value">piranha.Width</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="616042621144880" type="System">
+                                    <param id="0" name="Variable">seaEnemyHeight</param>
+                                    <param id="1" name="Value">piranha.Height</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="188804368883250">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="273204100772397" type="System">
+                                            <param id="0" name="Name">&quot;number&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">int(random(1, 3))</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="193986937949776" type="System">
+                                            <param id="0" name="Object to create">piranha</param>
+                                            <param id="1" name="Layer">2</param>
+                                            <param id="2" name="X">0</param>
+                                            <param id="3" name="Y">0</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="270564569064139" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">piranha.UID{###}seaEnemyWidth{###}seaEnemyHeight{###}SeaMiddleSpawner.X{###}random(SeaTopSpawner.Y, SeaBottomSpawner.Y){###}&quot;piranha&quot;{###}1{###}1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
                     </sub-events>
                 </event-block>
             </sub-events>
@@ -406,6 +589,11 @@
                             <param id="0" name="Variable">currentAction</param>
                             <param id="1" name="Comparison">1</param>
                             <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="516915817211936" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions />
@@ -432,6 +620,44 @@
                                 <action id="4" name="Set animation" sid="773231079188653" type="bomb">
                                     <param id="0" name="Animation">&quot;explosion&quot;</param>
                                     <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="311740657097662">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="702471583158721" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                        <condition id="-11" name="For Each" sid="560780949864498" type="System">
+                            <param id="0" name="Object">octopus</param>
+                        </condition>
+                        <condition id="-16" name="Is on layer" sid="814430384756915" type="octopus">
+                            <param id="0" name="Layer">2</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="776403054417519" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="890798183816649">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="346589862303986" type="System">
+                                    <param id="0" name="First value">random(1)</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">0.6</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="398893144385578" type="System">
+                                    <param id="0" name="Object to create">ink</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">octopus.X</param>
+                                    <param id="3" name="Y">octopus.Y</param>
                                 </action>
                             </actions>
                         </event-block>

@@ -6,7 +6,7 @@
         <variable constant="1" name="NORMAL_DIMENSION_PUNTUATION" sid="607933237517883" static="0" type="number">0.5</variable>
         <event-block sid="933735822905249">
             <conditions>
-                <condition id="-25" name="On loader layout complete" sid="241667474350837" type="System" />
+                <condition id="-2" name="On start of layout" sid="241667474350837" type="System" />
             </conditions>
             <actions>
                 <action id="4" name="Set animation" sid="476864839705863" type="NormalBackground">
@@ -47,7 +47,12 @@
                 <event-block sid="811636915111875">
                     <conditions>
                         <condition id="-6" name="Every X seconds" sid="554602021285969" type="System">
-                            <param id="0" name="Interval (seconds)">1.5</param>
+                            <param id="0" name="Interval (seconds)">enemyCreationInterval</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="600269905357083" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -160,35 +165,11 @@
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
+                                <action id="0" name="Call function" sid="600410665102631" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">airplane.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalTopSpawner.X{###}choose(NormalTopSpawner.Y, NormalMiddleSpawner.Y){###}&quot;airplane&quot;{###}21{###}0</param>
+                                </action>
                             </actions>
-                            <sub-events>
-                                <event-block sid="432210011813717">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="728485703538213" type="System">
-                                            <param id="0" name="First value">random(2)</param>
-                                            <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Second value">1</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="600410665102631" type="Function">
-                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
-                                            <param id="1" name="Parameter {n}">airplane.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalTopSpawner.X{###}NormalTopSpawner.Y{###}&quot;airplane&quot;{###}21{###}0</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="675888884199505">
-                                    <conditions>
-                                        <condition id="-22" name="Else" sid="435549154563338" type="System" />
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="945692833201735" type="Function">
-                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
-                                            <param id="1" name="Parameter {n}">airplane.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalMiddleSpawner.X{###}NormalMiddleSpawner.Y{###}&quot;airplane&quot;{###}21{###}0</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
                         </event-block>
                         <event-block sid="610658545626968">
                             <conditions>
@@ -222,35 +203,11 @@
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
+                                <action id="0" name="Call function" sid="960113992558117" type="Function">
+                                    <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                    <param id="1" name="Parameter {n}">helicopter.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalTopSpawner.X{###}choose(NormalTopSpawner.Y, NormalMiddleSpawner.Y){###}&quot;helicopter&quot;{###}2{###}0</param>
+                                </action>
                             </actions>
-                            <sub-events>
-                                <event-block sid="310224874612714">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="170737408573775" type="System">
-                                            <param id="0" name="First value">random(2)</param>
-                                            <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Second value">1</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="960113992558117" type="Function">
-                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
-                                            <param id="1" name="Parameter {n}">helicopter.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalTopSpawner.X{###}NormalTopSpawner.Y{###}&quot;helicopter&quot;{###}2{###}0</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="648815763569020">
-                                    <conditions>
-                                        <condition id="-22" name="Else" sid="150329994322609" type="System" />
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="486626291917697" type="Function">
-                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
-                                            <param id="1" name="Parameter {n}">helicopter.UID{###}normalEnemyWidth{###}normalEnemyHeight{###}NormalMiddleSpawner.X{###}NormalMiddleSpawner.Y{###}&quot;helicopter&quot;{###}2{###}0</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
                         </event-block>
                         <event-block sid="258783534778503">
                             <conditions>
@@ -310,6 +267,11 @@
                             <param id="0" name="Variable">currentAction</param>
                             <param id="1" name="Comparison">1</param>
                             <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="498954592634724" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions />

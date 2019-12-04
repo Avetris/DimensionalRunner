@@ -6,10 +6,17 @@
         <include>DimensionChangeEventSheet</include>
         <include>SeaDimensionEventSheet</include>
         <include>NormalDimensionEventSheet</include>
+        <variable constant="0" name="gameRunning" sid="882525403724376" static="0" type="number">1</variable>
+        <variable constant="0" name="enemyCreationInterval" sid="700742132207806" static="0" type="number">3</variable>
         <event-block sid="387467283334497">
             <conditions>
                 <condition id="-6" name="Every X seconds" sid="402318174600822" type="System">
-                    <param id="0" name="Interval (seconds)">1.0</param>
+                    <param id="0" name="Interval (seconds)">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="902253665941926" type="System">
+                    <param id="0" name="Variable">gameRunning</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
             <actions />
@@ -191,6 +198,11 @@
                         <condition id="-16" name="Is on layer" sid="850850049270617" type="Enemy">
                             <param id="0" name="Layer">2</param>
                         </condition>
+                        <condition id="-14" name="Compare variable" sid="570601260223727" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action behavior="Platform" id="7" name="Simulate control" sid="396325233365286" type="Enemy">
@@ -213,16 +225,25 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">currentDimensionAux</param>
                         </condition>
-                        <condition id="-14" name="Compare variable" sid="975101856868159" type="System">
-                            <param id="0" name="Variable">currentDimension</param>
+                        <condition id="-7" name="Compare instance variable" sid="612768432710153" type="Player">
+                            <param id="0" name="Instance variable">dimension</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">Player.dimension</param>
+                            <param id="2" name="Value">currentDimension</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="646440098743881" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="14" name="Log" sid="176450698370554" type="Browser">
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;ENTRA&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="352088967071975" type="Function">
+                            <param id="0" name="Name">&quot;endGame&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
                 </event-block>
@@ -290,6 +311,29 @@
                         </event-block>
                     </sub-events>
                 </event-block>
+                <event-block sid="777701429360028">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="671749319741363" type="System">
+                            <param id="0" name="Interval (seconds)">30</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="206353338024874" type="System">
+                            <param id="0" name="Variable">enemyCreationInterval</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="922911671331352" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="541834609767233" type="System">
+                            <param id="0" name="Variable">enemyCreationInterval</param>
+                            <param id="1" name="Value">0.2</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="544782815635117" title="Background common behaviour">
@@ -299,6 +343,11 @@
                         <condition id="-1" name="Every tick" sid="559938349869080" type="System" />
                         <condition id="-11" name="For Each" sid="264019605253499" type="System">
                             <param id="0" name="Object">Backgrounds</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="605291047927893" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -320,6 +369,83 @@
                     <actions>
                         <action id="-1" name="Set X" sid="385882593182946" type="Backgrounds">
                             <param id="0" name="X">Backgrounds.Width / 2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="696570818757071" title="End Game Dialog">
+            <sub-events>
+                <event-block sid="721840984660728">
+                    <conditions>
+                        <condition id="0" name="On function" sid="501157510045049" type="Function">
+                            <param id="0" name="Name">&quot;endGame&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="847300698373422" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="851584220637124" type="System">
+                            <param id="0" name="Layer">&quot;EndGame&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="846648163944408" type="finalPuntuation">
+                            <param id="0" name="Text">txtPuntuation.Text</param>
+                        </action>
+                        <action id="2" name="Stop" sid="478581740667151" type="Enemy" />
+                        <action id="2" name="Stop" sid="980874496708429" type="Player" />
+                        <action behavior="Jump" id="11" name="Set enabled" sid="568391229685595" type="Player">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="481930189056789">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="847518006362060" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">Repeat</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="959699231795623" type="System">
+                            <param id="0" name="Layout">GameLayout</param>
+                        </action>
+                        <action id="-21" name="Reset global variables" sid="417504742255281" type="System" />
+                        <action id="-45" name="Reset persisted objects" sid="263621393279289" type="System" />
+                        <action id="-4" name="Set layer visible" sid="754908789237134" type="System">
+                            <param id="0" name="Layer">&quot;EndGame&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="572761538384330" type="System">
+                            <param id="0" name="Layer">&quot;Tutorial&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="211135692272911">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="336542659261898" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">GoMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="165090097056417" type="System">
+                            <param id="0" name="Layout">MainMenu</param>
+                        </action>
+                        <action id="-21" name="Reset global variables" sid="283439038839725" type="System" />
+                        <action id="-45" name="Reset persisted objects" sid="603314456894499" type="System" />
+                        <action id="-4" name="Set layer visible" sid="289818216756146" type="System">
+                            <param id="0" name="Layer">&quot;EndGame&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="571928437938206" type="System">
+                            <param id="0" name="Layer">&quot;Tutorial&quot;</param>
+                            <param id="1" name="Visibility">1</param>
                         </action>
                     </actions>
                 </event-block>

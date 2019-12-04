@@ -22,12 +22,15 @@
         <variable constant="0" name="widthNew" sid="285205806824954" static="0" type="number">0</variable>
         <variable constant="0" name="heightNew" sid="467488778342084" static="0" type="number">0</variable>
         <variable constant="0" name="dimensionInitialization" sid="537008797044780" static="0" type="number">0</variable>
+        <variable constant="0" name="playerAnimation" sid="928373551192647" static="0" type="text">skin1</variable>
         <variable constant="0" name="totalDimensions" sid="183805900099794" static="0" type="number">1</variable>
         <event-block sid="113181838577138">
             <conditions>
-                <condition id="-25" name="On loader layout complete" sid="205975653204135" type="System" />
+                <condition id="-2" name="On start of layout" sid="205975653204135" type="System" />
             </conditions>
-            <actions />
+            <actions>
+                <action id="2" name="Stop" sid="468457913843286" type="Player" />
+            </actions>
             <sub-events>
                 <event-block sid="715428504524206">
                     <conditions>
@@ -72,10 +75,6 @@
                             <param id="0" name="Variable">widthNew</param>
                             <param id="1" name="Value">widthMain / totalDimensions</param>
                         </action>
-                        <action id="-9" name="Set value" sid="750804720153695" type="System">
-                            <param id="0" name="Variable">xNew</param>
-                            <param id="1" name="Value">(WindowDetection.X - widthNew) + (widthNew * dimensionInitialization)</param>
-                        </action>
                         <action id="-9" name="Set value" sid="731894253111522" type="System">
                             <param id="0" name="Variable">heightNew</param>
                             <param id="1" name="Value">200</param>
@@ -83,6 +82,10 @@
                         <action id="-9" name="Set value" sid="141724070450572" type="System">
                             <param id="0" name="Variable">yNew</param>
                             <param id="1" name="Value">backDimensions.Y</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="750804720153695" type="System">
+                            <param id="0" name="Variable">xNew</param>
+                            <param id="1" name="Value">(WindowDetection.X - widthNew) + (widthNew * dimensionInitialization)</param>
                         </action>
                         <action id="-10" name="Add to" sid="805103735309949" type="System">
                             <param id="0" name="Variable">dimensionInitialization</param>
@@ -95,7 +98,7 @@
                                 <condition id="-7" name="Compare instance variable" sid="836218416983714" type="WindowDetection">
                                     <param id="0" name="Instance variable">windowDetectionDimension</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">dimensionInitialization </param>
+                                    <param id="2" name="Value">SeaWindowDetection.WindowDetectionDimension</param>
                                 </condition>
                                 <condition id="-24" name="For Each (ordered)" sid="207861837247882" type="System">
                                     <param id="0" name="Object">SeaDimension</param>
@@ -134,6 +137,29 @@
                 </action>
             </actions>
             <sub-events>
+                <event-block sid="351124754397568">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="721718895151728" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="154928390894630" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="644511634077355" type="Player">
+                            <param id="0" name="Animation">playerAnimation</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="979534098143856" type="System">
+                            <param id="0" name="Layer">&quot;Tutorial&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="631398959457426">
                     <conditions>
                         <condition id="-8" name="Compare two values" sid="461981489964024" type="System">
@@ -242,7 +268,7 @@
                     </conditions>
                     <actions>
                         <action id="4" name="Set animation" sid="995162298191673" type="Player">
-                            <param id="0" name="Animation">Self.skin</param>
+                            <param id="0" name="Animation">playerAnimation</param>
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="0" name="Call function" sid="415705681353386" type="Function">
@@ -266,8 +292,8 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="4" name="Set animation" sid="901301191538796" type="Player">
-                            <param id="0" name="Animation">Self.skin</param>
+                        <action id="4" name="Set animation" sid="931995215923732" type="Player">
+                            <param id="0" name="Animation">playerAnimation</param>
                             <param id="1" name="From">1</param>
                         </action>
                     </actions>
@@ -548,17 +574,17 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-5" name="Set width" sid="697768795405261" type="Everything">
-                                    <param id="0" name="Width">((widthMain*Everything.Width) / widthNew) </param>
-                                </action>
                                 <action id="-6" name="Set height" sid="207108023396575" type="Everything">
                                     <param id="0" name="Height">((heightMain*Everything.Height) / backDimensions.Height)</param>
                                 </action>
-                                <action id="-1" name="Set X" sid="396252797135026" type="Everything">
-                                    <param id="0" name="X">((widthMain*Everything.X) / widthNew) - xMain</param>
-                                </action>
                                 <action id="-2" name="Set Y" sid="114963267969342" type="Everything">
                                     <param id="0" name="Y">((heightMain*Everything.Y) / backDimensions.Height) - yNew</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="697768795405261" type="Everything">
+                                    <param id="0" name="Width">((widthMain*Everything.Width) / widthNew) </param>
+                                </action>
+                                <action id="-1" name="Set X" sid="396252797135026" type="Everything">
+                                    <param id="0" name="X">((widthMain*Everything.X) / widthNew)</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -567,17 +593,17 @@
                                 <condition id="-22" name="Else" sid="383417358359679" type="System" />
                             </conditions>
                             <actions>
-                                <action id="-5" name="Set width" sid="960183932241061" type="Everything">
-                                    <param id="0" name="Width">((widthNew*Everything.Width) / widthMain)</param>
-                                </action>
                                 <action id="-6" name="Set height" sid="286115074411360" type="Everything">
                                     <param id="0" name="Height">((backDimensions.Height*Everything.Height) / heightMain)</param>
                                 </action>
-                                <action id="-1" name="Set X" sid="745751671874784" type="Everything">
-                                    <param id="0" name="X">(xNew - (widthNew / 2))+((widthNew*Everything.X) / widthMain)</param>
-                                </action>
                                 <action id="-2" name="Set Y" sid="963286549580308" type="Everything">
                                     <param id="0" name="Y">(yNew - ( heightNew / 2)) + ((heightNew*Everything.Y) / heightMain)</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="960183932241061" type="Everything">
+                                    <param id="0" name="Width">((widthNew*Everything.Width) / widthMain)</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="745751671874784" type="Everything">
+                                    <param id="0" name="X">((widthNew*Everything.X) / widthMain)</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -620,16 +646,6 @@
                             </actions>
                         </event-block>
                     </sub-events>
-                </event-block>
-                <event-block sid="403480436340915">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="630009002515968" type="System">
-                            <param id="0" name="Variable">xMain</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">xNew</param>
-                        </condition>
-                    </conditions>
-                    <actions />
                 </event-block>
             </sub-events>
         </event-block>
