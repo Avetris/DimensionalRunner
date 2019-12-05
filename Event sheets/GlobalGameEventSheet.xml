@@ -1,0 +1,806 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GlobalGameEventSheet</name>
+    <events>
+        <include>DimensionChangeEventSheet</include>
+        <include>SeaDimensionEventSheet</include>
+        <include>NormalDimensionEventSheet</include>
+        <variable constant="0" name="gameRunning" sid="882525403724376" static="0" type="number">1</variable>
+        <variable constant="0" name="enemyCreationInterval" sid="700742132207806" static="0" type="number">3</variable>
+        <event-block sid="387467283334497">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="402318174600822" type="System">
+                    <param id="0" name="Interval (seconds)">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="902253665941926" type="System">
+                    <param id="0" name="Variable">gameRunning</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="872437033666197">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="307272373233183" type="System">
+                            <param id="0" name="Variable">currentAction</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="125191965828715" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">currentDimensionAux</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="498220856065481" type="Function">
+                            <param id="0" name="Name">&quot;checkBackDimensionChangeTime&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="983968851081035">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="712522145127854" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">NormalWindowDetection.dimensionPosition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="182051115956306" type="txtPuntuation">
+                                    <param id="0" name="Instance variable">puntuation</param>
+                                    <param id="1" name="Value">NORMAL_DIMENSION_PUNTUATION</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="204720652619478">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="768187788083853" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="518378437808777" type="txtPuntuation">
+                                    <param id="0" name="Instance variable">puntuation</param>
+                                    <param id="1" name="Value">SEA_DIMENSION_PUNTUATION</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="945587370879410">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Set text" sid="671041352481664" type="txtPuntuation">
+                                    <param id="0" name="Text">floor(self.puntuation)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="129450257194529">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="195973302383616" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="996088140308904" type="System">
+                                    <param id="0" name="Variable">currentDimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">SeaWindowDetection.dimensionPosition</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="821848959606847">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="252396481524980" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-12" name="Subtract from" sid="258287633794351" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Value">3</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="822742112468400" type="tbOxigen">
+                                            <param id="0" name="Width">tbOxigen.air</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="679671358412703">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="831665284206416" type="System" />
+                                        <condition id="-14" name="Compare variable" sid="616612590303210" type="System">
+                                            <param id="0" name="Variable">gameRunning</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="681807150820691" type="Function">
+                                            <param id="0" name="Name">&quot;endGame&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="648599673612868">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="114670329000985" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="872210606378241">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="814555993565205" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="308793362263123" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Value">1.5</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="146512354410512" type="tbOxigen">
+                                            <param id="0" name="Width">tbOxigen.air</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="870001254573330">
+            <conditions>
+                <condition id="0" name="On function" sid="323443809108073" type="Function">
+                    <param id="0" name="Name">&quot;checkBackDimensionChangeTime&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="922161042769329">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="947505238451698" type="System">
+                            <param id="0" name="Variable">dimensionChangeLeftTime</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="613211616451694" type="System">
+                            <param id="0" name="Variable">dimensionChangeLeftTime</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="711102509649767" type="backDimensionsUnabled">
+                            <param id="0" name="Y">backDimensions.Y + ((backDimensions.Height * (DIMENSION_CHANGE_TIME - dimensionChangeLeftTime )/ DIMENSION_CHANGE_TIME) )/ 2</param>
+                        </action>
+                        <action id="-6" name="Set height" sid="939566378357467" type="backDimensionsUnabled">
+                            <param id="0" name="Height">backDimensions.Height * (dimensionChangeLeftTime  / DIMENSION_CHANGE_TIME)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="886290062826583">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="839568987357744" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-6" name="Set height" sid="829776004879645" type="backDimensionsUnabled">
+                            <param id="0" name="Height">backDimensions.Height * dimensionChangeLeftTime  / DIMENSION_CHANGE_TIME</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="164102647539836" type="backDimensionsUnabled">
+                            <param id="0" name="Y">backDimensions.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="593532287046475" title="Enemies common behaviour">
+            <sub-events>
+                <event-block sid="208044853154281">
+                    <conditions>
+                        <condition id="-19" name="Pick all" sid="138677958867577" type="System">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                        <condition id="-16" name="Is on layer" sid="850850049270617" type="Enemy">
+                            <param id="0" name="Layer">&quot;Dimension&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="570601260223727" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="396325233365286" type="Enemy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="683307748039198">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="944840337907222" type="Enemy">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="747607492008940" type="System">
+                            <param id="0" name="Variable">currentAction</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="765666153754227" type="System">
+                            <param id="0" name="Variable">currentDimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">currentDimensionAux</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="612768432710153" type="Player">
+                            <param id="0" name="Instance variable">dimension</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">currentDimension</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="646440098743881" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="352088967071975" type="Function">
+                            <param id="0" name="Name">&quot;endGame&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="641376641884934">
+                    <conditions>
+                        <condition id="0" name="On function" sid="717329867619087" type="Function">
+                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Pick by unique ID" sid="495157363784897" type="Everything">
+                            <param id="0" name="Unique ID">Function.Param(0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-7" name="Set size" sid="656724525505882" type="Everything">
+                            <param id="0" name="Width">Function.Param(1)</param>
+                            <param id="1" name="Height">Function.Param(2)</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="749710764080540" type="Everything">
+                            <param id="0" name="Animation">Function.Param(5)&amp;round(random(1, Function.Param(6)))</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="120771909862327" type="Everything">
+                            <param id="0" name="X">Function.Param(3)</param>
+                            <param id="1" name="Y">Function.Param(4)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="807988250088764">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="944618424206592" type="Enemy">
+                                    <param id="0" name="Unique ID">Function.Param(0)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="762835467605441">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="940657130277774" type="Function">
+                                            <param id="0" name="Index">7</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">currentDimension</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="239495160219892" type="Enemy">
+                                            <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="156544502021229">
+                                    <conditions>
+                                        <condition id="1" name="Compare parameter" sid="594177079544270" type="Function">
+                                            <param id="0" name="Index">7</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Value">currentDimension</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Platform" id="1" name="Set max speed" sid="726865916790983" type="Enemy">
+                                            <param id="0" name="Max Speed">(MAX_VELOCITY * Enemy.velocity) / totalDimensions</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="777701429360028">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="671749319741363" type="System">
+                            <param id="0" name="Interval (seconds)">30</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="206353338024874" type="System">
+                            <param id="0" name="Variable">enemyCreationInterval</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="922911671331352" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="541834609767233" type="System">
+                            <param id="0" name="Variable">enemyCreationInterval</param>
+                            <param id="1" name="Value">0.2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="544782815635117" title="Background common behaviour">
+            <sub-events>
+                <event-block sid="929631278879739">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="559938349869080" type="System" />
+                        <condition id="-11" name="For Each" sid="264019605253499" type="System">
+                            <param id="0" name="Object">Backgrounds</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="605291047927893" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="334613066972411" type="Backgrounds">
+                            <param id="0" name="X">Backgrounds.X - (dt*100)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="388773237864433">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="268197463820860" type="System">
+                            <param id="0" name="Object">Backgrounds</param>
+                        </condition>
+                        <condition id="-1" name="Compare X" sid="593908354082343" type="Backgrounds">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="385882593182946" type="Backgrounds">
+                            <param id="0" name="X">Backgrounds.Width / 2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="916979067350549" title="PickUps Generator">
+            <sub-events>
+                <variable constant="0" name="randomPickupDimension" sid="136813875942580" static="0" type="number">0</variable>
+                <variable constant="0" name="randomPickup" sid="968015180936973" static="0" type="number">0</variable>
+                <variable constant="0" name="pickUpWidth" sid="109571873024584" static="0" type="number">0</variable>
+                <variable constant="0" name="pickUpHeight" sid="581990532775405" static="0" type="number">0</variable>
+                <event-block sid="971978140676557">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="366224504526048" type="System">
+                            <param id="0" name="Interval (seconds)">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="858134366072511" type="System">
+                            <param id="0" name="Variable">randomPickupDimension</param>
+                            <param id="1" name="Value">random(totalDimensions - 1)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="823824462421108">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="429225660684486" type="System">
+                                    <param id="0" name="Variable">randomPickupDimension</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="525580236347701" type="System">
+                                    <param id="0" name="Variable">randomPickup</param>
+                                    <param id="1" name="Value">random(1)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="970635109391198">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="137518077766311" type="System">
+                                            <param id="0" name="Variable">randomPickup</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">0.85</param>
+                                        </condition>
+                                        <condition id="-13" name="Pick nth instance" sid="700368779926781" type="System">
+                                            <param id="0" name="Object">seaPickUp</param>
+                                            <param id="1" name="Instance">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="507523177203149" type="System">
+                                            <param id="0" name="Variable">pickUpWidth</param>
+                                            <param id="1" name="Value">seaPickUp.Width</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="385206318835567" type="System">
+                                            <param id="0" name="Variable">pickUpHeight</param>
+                                            <param id="1" name="Value">seaPickUp.Height</param>
+                                        </action>
+                                        <action id="-3" name="Create object" sid="903412553764034" type="System">
+                                            <param id="0" name="Object to create">seaPickUp</param>
+                                            <param id="1" name="Layer">&quot;Dimension&quot;</param>
+                                            <param id="2" name="X">0</param>
+                                            <param id="3" name="Y">0</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="531430000525302" type="Function">
+                                            <param id="0" name="Name">&quot;configureEnemy&quot;</param>
+                                            <param id="1" name="Parameter {n}">seaPickUp.UID{###}pickUpWidth{###}pickUpHeight{###}SeaBottomSpawner.X{###}random(SeaTopSpawner.Y, SeaBottomSpawner.Y){###}&quot;pickUp&quot;{###}1{###}1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="715572427773238">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="633540446262500" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Value">0.3</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="193622666623139" type="seaPickUp">
+                                                    <param id="0" name="Animation">&quot;pickUp1&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="915576205162257">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="810368965574422" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">0.3</param>
+                                                </condition>
+                                                <condition id="-14" name="Compare variable" sid="850981646209528" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Value">0.5</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="654173367366235" type="seaPickUp">
+                                                    <param id="0" name="Animation">&quot;pickUp2&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="391623750578910">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="896151103047942" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">0.5</param>
+                                                </condition>
+                                                <condition id="-14" name="Compare variable" sid="944522447641612" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Value">0.65</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="626688948146850" type="seaPickUp">
+                                                    <param id="0" name="Animation">&quot;pickUp3&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="776574364397248">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="557020926864500" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">0.65</param>
+                                                </condition>
+                                                <condition id="-14" name="Compare variable" sid="218876945376811" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Value">0.75</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="682618563254423" type="seaPickUp">
+                                                    <param id="0" name="Animation">&quot;pickUp4&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="292584976012848">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="487737527627483" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">0.75</param>
+                                                </condition>
+                                                <condition id="-14" name="Compare variable" sid="997508087450345" type="System">
+                                                    <param id="0" name="Variable">randomPickup</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Value">0.85</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set animation" sid="298566334726765" type="seaPickUp">
+                                                    <param id="0" name="Animation">&quot;pickUpOxigen&quot;</param>
+                                                    <param id="1" name="From">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="830397600683899">
+                    <conditions>
+                        <condition id="-19" name="Pick all" sid="675624732042746" type="System">
+                            <param id="0" name="Object">seaPickUp</param>
+                        </condition>
+                        <condition id="-16" name="Is on layer" sid="577790759911834" type="seaPickUp">
+                            <param id="0" name="Layer">&quot;Dimension&quot;</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="978599529862684" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="209237646038687" type="seaPickUp">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="349300092759727">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="625446899041865" type="Player">
+                            <param id="0" name="Object">seaPickUp</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="192275988907728" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="720746630240450">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="760783981674249" type="Player">
+                                    <param id="0" name="Instance variable">dimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentDimension</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="392693075433851" type="Player">
+                                    <param id="0" name="Instance variable">dimension</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">currentDimensionAux</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="523021676562587">
+                                    <conditions>
+                                        <condition id="2" name="Is playing" sid="817488541122054" type="seaPickUp">
+                                            <param id="0" name="Animation">&quot;pickUp1&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="854464875531056" type="txtPuntuation">
+                                            <param id="0" name="Instance variable">puntuation</param>
+                                            <param id="1" name="Value">50</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="194501134682189" type="seaPickUp" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="257683387083786">
+                                    <conditions>
+                                        <condition id="2" name="Is playing" sid="358511106753807" type="seaPickUp">
+                                            <param id="0" name="Animation">&quot;pickUp2&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="155220276839240" type="txtPuntuation">
+                                            <param id="0" name="Instance variable">puntuation</param>
+                                            <param id="1" name="Value">75</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="216729755344684" type="seaPickUp" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="764400162105374">
+                                    <conditions>
+                                        <condition id="2" name="Is playing" sid="866593501295446" type="seaPickUp">
+                                            <param id="0" name="Animation">&quot;pickUp3&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="140354737977464" type="txtPuntuation">
+                                            <param id="0" name="Instance variable">puntuation</param>
+                                            <param id="1" name="Value">100</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="597467934374494" type="seaPickUp" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="551227129188654">
+                                    <conditions>
+                                        <condition id="2" name="Is playing" sid="368536271203166" type="seaPickUp">
+                                            <param id="0" name="Animation">&quot;pickUp4&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="155846435077845" type="txtPuntuation">
+                                            <param id="0" name="Instance variable">puntuation</param>
+                                            <param id="1" name="Value">125</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="920537710121862" type="seaPickUp" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="980713406770467">
+                                    <conditions>
+                                        <condition id="2" name="Is playing" sid="415501258500647" type="seaPickUp">
+                                            <param id="0" name="Animation">&quot;pickUpOxigen&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="716427496714648" type="tbOxigen">
+                                            <param id="0" name="Instance variable">air</param>
+                                            <param id="1" name="Value">10</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="419907486556934" type="seaPickUp" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="570269612949663">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Set text" sid="953906365004388" type="txtPuntuation">
+                                            <param id="0" name="Text">floor(self.puntuation)</param>
+                                        </action>
+                                        <action id="-5" name="Set width" sid="318573116665456" type="tbOxigen">
+                                            <param id="0" name="Width">tbOxigen.air</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="696570818757071" title="End Game Dialog">
+            <sub-events>
+                <event-block sid="721840984660728">
+                    <conditions>
+                        <condition id="0" name="On function" sid="501157510045049" type="Function">
+                            <param id="0" name="Name">&quot;endGame&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="847300698373422" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="851584220637124" type="System">
+                            <param id="0" name="Layer">&quot;EndGame&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="846648163944408" type="finalPuntuation">
+                            <param id="0" name="Text">txtPuntuation.Text</param>
+                        </action>
+                        <action id="2" name="Stop" sid="478581740667151" type="Enemy" />
+                        <action id="2" name="Stop" sid="980874496708429" type="Player" />
+                        <action behavior="Jump" id="11" name="Set enabled" sid="568391229685595" type="Player">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="481930189056789">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="847518006362060" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">Repeat</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="959699231795623" type="System">
+                            <param id="0" name="Layout">GameLayout</param>
+                        </action>
+                        <action id="-21" name="Reset global variables" sid="417504742255281" type="System" />
+                        <action id="-45" name="Reset persisted objects" sid="263621393279289" type="System" />
+                        <action id="-4" name="Set layer visible" sid="754908789237134" type="System">
+                            <param id="0" name="Layer">&quot;EndGame&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="572761538384330" type="System">
+                            <param id="0" name="Layer">&quot;Tutorial&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="435012606662071" type="txtPuntuation">
+                            <param id="0" name="Instance variable">puntuation</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="974001976017047" type="txtPuntuation">
+                            <param id="0" name="Text">Self.puntuation</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="336608310923580" type="tbOxigen">
+                            <param id="0" name="Instance variable">air</param>
+                            <param id="1" name="Value">100</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="979220895099575" type="tbOxigen">
+                            <param id="0" name="Width">tbOxigen.air</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="469917003385014" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="211135692272911">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="336542659261898" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">GoMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="165090097056417" type="System">
+                            <param id="0" name="Layout">MainMenu</param>
+                        </action>
+                        <action id="-21" name="Reset global variables" sid="283439038839725" type="System" />
+                        <action id="-45" name="Reset persisted objects" sid="603314456894499" type="System" />
+                        <action id="-4" name="Set layer visible" sid="289818216756146" type="System">
+                            <param id="0" name="Layer">&quot;EndGame&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="571928437938206" type="System">
+                            <param id="0" name="Layer">&quot;Tutorial&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="171288766467950" type="txtPuntuation">
+                            <param id="0" name="Instance variable">puntuation</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="849692766018148" type="txtPuntuation">
+                            <param id="0" name="Text">Self.puntuation</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="419538060632324" type="tbOxigen">
+                            <param id="0" name="Instance variable">air</param>
+                            <param id="1" name="Value">100</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="334974139468281" type="tbOxigen">
+                            <param id="0" name="Width">tbOxigen.air</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="895989017137466" type="System">
+                            <param id="0" name="Variable">gameRunning</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

@@ -30,6 +30,9 @@
             </conditions>
             <actions>
                 <action id="2" name="Stop" sid="468457913843286" type="Player" />
+                <action id="-26" name="Move to layer" sid="397063442102192" type="txtPuntuation">
+                    <param id="0" name="Layer">&quot;HUD&quot;</param>
+                </action>
             </actions>
             <sub-events>
                 <event-block sid="715428504524206">
@@ -126,6 +129,11 @@
                 </condition>
                 <condition id="-14" name="Compare variable" sid="568804396014433" type="System">
                     <param id="0" name="Variable">currentAction</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">-1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="181401005727983" type="System">
+                    <param id="0" name="Variable">gameRunning</param>
                     <param id="1" name="Comparison">1</param>
                     <param id="2" name="Value">-1</param>
                 </condition>

@@ -32,7 +32,6 @@
                         <action id="-2" name="Go to layout" sid="956013328952264" type="System">
                             <param id="0" name="Layout">GameLayout</param>
                         </action>
-                        <action id="-26" name="Restart layout" sid="542414119903563" type="System" />
                     </actions>
                 </event-block>
                 <event-block sid="970347921714054">

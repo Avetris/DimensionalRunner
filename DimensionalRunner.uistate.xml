@@ -11,11 +11,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout order="0">GameLayout</layout>
-        <layout order="5">MainMenu</layout>
-        <event-sheet active="1" order="1">MainMenuEventSheet</event-sheet>
-        <event-sheet order="2">NormalDimensionEventSheet</event-sheet>
-        <event-sheet order="3">SeaDimensionEventSheet</event-sheet>
-        <event-sheet order="4">GlobalEventSheet</event-sheet>
+        <event-sheet order="1">GlobalGameEventSheet</event-sheet>
+        <event-sheet order="2">SeaDimensionEventSheet</event-sheet>
+        <event-sheet active="1" order="3">DimensionChangeEventSheet</event-sheet>
+        <event-sheet order="4">NormalDimensionEventSheet</event-sheet>
+        <event-sheet order="5">MainMenuEventSheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -52,7 +52,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/endGame/" />
         <folder expanded="1" path="animation-folder/Repeat/" />
         <folder expanded="1" path="animation-folder/GoMenu/" />
-        <folder expanded="1" path="animation-folder/Sprite3/" />
+        <folder expanded="1" path="animation-folder/tap/" />
         <folder expanded="1" path="animation-folder/tutorial/" />
         <folder expanded="1" path="animation-folder/soldier/" />
         <folder expanded="1" path="animation-folder/tank/" />
@@ -85,6 +85,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/SeaMiddleSpawner/" />
         <folder expanded="1" path="animation-folder/SeaTopSpawner/" />
         <folder expanded="1" path="animation-folder/SeaBackground/" />
+        <folder expanded="1" path="animation-folder/seaPickUp/" />
         <folder expanded="1" path="animation-folder/MiddleGround/" />
         <folder expanded="1" path="animation-folder/Suelo2/" />
         <folder expanded="1" path="animation-folder/backDimensions/" />

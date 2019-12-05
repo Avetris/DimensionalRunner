@@ -85,7 +85,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="383278708076606" type="System">
                                     <param id="0" name="Object to create">bomb</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -123,7 +123,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="206046851478442" type="System">
                                     <param id="0" name="Object to create">barrel</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -164,7 +164,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="353428861112772" type="System">
                                     <param id="0" name="Object to create">bottomAnchor</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -202,7 +202,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="760625847499297" type="System">
                                     <param id="0" name="Object to create">topAnchor</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -240,7 +240,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="415533433967093" type="System">
                                     <param id="0" name="Object to create">rock</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -305,7 +305,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="556088580302568" type="System">
                                     <param id="0" name="Object to create">shark</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -343,7 +343,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="682810015420258" type="System">
                                     <param id="0" name="Object to create">dolphin</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -381,7 +381,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="187216223330067" type="System">
                                     <param id="0" name="Object to create">whale</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -419,7 +419,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="285919416298310" type="System">
                                     <param id="0" name="Object to create">crab</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -457,7 +457,7 @@
                                 </action>
                                 <action id="-3" name="Create object" sid="476694285965113" type="System">
                                     <param id="0" name="Object to create">octopus</param>
-                                    <param id="1" name="Layer">2</param>
+                                    <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                     <param id="2" name="X">0</param>
                                     <param id="3" name="Y">0</param>
                                 </action>
@@ -500,13 +500,13 @@
                                         <condition id="-10" name="For" sid="647344061482632" type="System">
                                             <param id="0" name="Name">&quot;number&quot;</param>
                                             <param id="1" name="Start index">1</param>
-                                            <param id="2" name="End index">int(random(1, 3))</param>
+                                            <param id="2" name="End index">int(random(1, 2))</param>
                                         </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-3" name="Create object" sid="220421124172951" type="System">
                                             <param id="0" name="Object to create">piranha</param>
-                                            <param id="1" name="Layer">2</param>
+                                            <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                             <param id="2" name="X">0</param>
                                             <param id="3" name="Y">0</param>
                                         </action>
@@ -557,7 +557,7 @@
                                     <actions>
                                         <action id="-3" name="Create object" sid="193986937949776" type="System">
                                             <param id="0" name="Object to create">piranha</param>
-                                            <param id="1" name="Layer">2</param>
+                                            <param id="1" name="Layer">&quot;Dimension&quot;</param>
                                             <param id="2" name="X">0</param>
                                             <param id="3" name="Y">0</param>
                                         </action>
@@ -634,7 +634,7 @@
                             <param id="0" name="Object">octopus</param>
                         </condition>
                         <condition id="-16" name="Is on layer" sid="814430384756915" type="octopus">
-                            <param id="0" name="Layer">2</param>
+                            <param id="0" name="Layer">&quot;Dimension&quot;</param>
                         </condition>
                         <condition id="-14" name="Compare variable" sid="776403054417519" type="System">
                             <param id="0" name="Variable">gameRunning</param>
